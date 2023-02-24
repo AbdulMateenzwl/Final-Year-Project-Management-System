@@ -1,0 +1,289 @@
+\documentclass{article}
+\usepackage{listings,graphicx,graphics}
+
+
+\title{Testing}
+\author{ABDUL MATEEN}
+
+\date{January 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\indent \indent List of 30 Queries
+
+\section{Tasks}
+
+\subsection{Group with the number of Students}
+\begin{lstlisting}
+    SELECT Id,Count(Student)
+    from GroupStudent
+    Group by GroupId AS Id
+\end{lstlisting}
+
+\subsection{Students which have not provided there email}
+\begin{lstlisting}
+    SELECT STUDENT.Id, RegistrationNo
+    From Student, Person P
+    Where P.id = Student.Id And
+        email is NULL
+\end{lstlisting}
+
+\subsection{Students which are not in any group}
+\begin{lstlisting}
+    Select id
+    From Student
+    Except
+    Select Student 
+    From GroupStudent
+\end{lstlisting}
+
+\subsection{Project which are not selected by anyone}
+\begin{lstlisting}
+    Select id
+    from Project
+    Except
+    Select ProjectId
+    from GroupProject
+\end{lstlisting}
+
+\subsection{Project which selected with more than one group}
+\begin{lstlisting}
+    Select Projectid
+    from GroupProject
+    Group by ProjectId
+    having Count(GrouId) > 1
+\end{lstlisting}
+
+\subsection{All Industry Advisor}
+\begin{lstlisting}
+    Select Id
+    from Advisor ,Lookup L
+    where L.id = Advisor.Id And
+        Value = 'Industry Advisor'
+\end{lstlisting}
+
+\subsection{Advisor which are not assigned to any group}
+\begin{lstlisting}
+    Select Id
+    from Advisor
+    Except 
+    Select AdvisorId
+    From ProjectAdvisor
+\end{lstlisting}
+
+\subsection{Students which are in multiple Groups}
+\begin{lstlisting}
+    Select StudentId
+    From GroupProject
+    Group by StudentId
+    Having count(GroupId) > 1
+\end{lstlisting}
+
+\subsection{Groups which have not given any evaluation}
+\begin{lstlisting}
+    Select id
+    from Group 
+    Except
+    Select GroupId
+    from GroupEvaluation
+\end{lstlisting}
+
+\subsection{Show Advisor with there details}
+\begin{lstlisting}
+    Select id,Designation,Salary, Value
+    from Advisor,Lookup
+    where Advisor.Id = Lookup.Id
+\end{lstlisting}
+
+\subsection{Show Students with there group}
+\begin{lstlisting}
+    Select S.id , S.RegistrationNo
+    From Student S
+    Join GrouStudent GS
+    On S.id = GS.Id
+\end{lstlisting}
+
+\subsection{Show Project Advisor with there Assigned Project}
+\begin{lstlisting}
+    Select P.id, Person.FirstName, Person.LastName
+    From ProjectAdvisor PA
+    Join Project P
+    ON P.Id = PA.ProjectId
+    Join Person
+    ON Person.Id = PA.ProjectId
+\end{lstlisting}
+
+
+\subsection{Show All Details of Student}
+\begin{lstlisting}
+    Select *
+    from Student S
+    Join Person P
+    ON S.Id = P.Id
+\end{lstlisting}
+
+\subsection{Student which use University Email}
+\begin{lstlisting}
+    SElect FirstName ,LastName
+    from student S
+    Join Person P
+    ON S.Id = P.Id
+    Where Email Like '%@uet.edu.pk'
+\end{lstlisting}
+
+\subsection{Show Percentage With Evaluation}
+\begin{lstlisting}
+    Select GroupId, (ObtainedMarks/TotalMarks * 100) AS Percentage
+    from GroupEvaluation G
+    Join Evaluation E
+    ON G.EvaluationId = E.Id
+\end{lstlisting}
+
+\subsection{Show Student with there Projects}
+\begin{lstlisting}
+    Select s.id , Project.Title
+    From Student S , GroupStuden GS
+    Where S.Id = GS.Id
+    Join GroupProject GP
+    ON GP.GroupId = GS.GroupId
+    Join Project
+    ON GP.Id = Project.Id
+\end{lstlisting}
+
+
+\subsection{Show Project Advisor with there Assigned Project}
+\begin{lstlisting}
+    Select PA.Id, P.FirstName, P.LastName, Pro.Title
+    From ProjectAdvisor PA
+    Join Project Pro
+    ON Pro.Id = PA.ProjectId
+    Join Person P
+    ON P.Id = PA.AdvisorId
+\end{lstlisting}
+
+\subsection{Select Project Advisor who are main Advisor}
+\begin{lstlisting}
+    Select PA.AdvisorId
+    From ProjectAdvisor PA
+    Join Lookup L
+    ON L.Id = PA.Id
+    Where Value = 'Main Advisor' And
+        Catogary = 'Advisor_Role'
+\end{lstlisting}
+
+\subsection{Show Group Details with date it Create on}
+\begin{lstlisting}
+    Select Id,StudentId, Status, CreatedOn
+    From Group G
+    Join GroupStudent GS
+    ON G.Id = GS.GroupId
+    ON G.Id = GS.GroupId
+\end{lstlisting}
+
+
+\subsection{Show Group Sorted by Created Date}
+\begin{lstlisting}
+    Select Id
+    From Group 
+    Order by CreatedOn
+\end{lstlisting}
+
+
+\subsection{Group Who Evaluation Date is NULL}
+\begin{lstlisting}
+    Select Group.Id
+    From Group.Id, GroupEvaluation GE
+    Where Group.Id = GE. GroupId And
+        GE.EvaluationDate is NULL
+\end{lstlisting}
+
+\subsection{Advisor whose Designation is Lecturers}
+\begin{lstlisting}
+    Select A.Id
+    Grom Advisor A
+    Join Lookup L
+    ON A.Id = L.Id
+    Where Value = 'Lecturer' And
+        Catogary ='Designation'
+\end{lstlisting}
+
+
+\subsection{Advisor whose Salary is below Average}
+\begin{lstlisting}
+    Select Id
+    From Advisor , (
+        Select Average(Salary)
+        From Advisor
+    ) As Avg
+    where Advisor.Salary > Avg
+\end{lstlisting}
+
+\subsection{Select Group Where Advisor is Assigned before Group is created}
+\begin{lstlisting}
+    Select G.Id
+    From GroupProject GP
+    Join Group G
+    ON GP.GroupId = G.Id
+    Where G.AssignmentDate > CreatedON
+\end{lstlisting}
+
+
+
+\subsection{Sort Groups by created Date}
+\begin{lstlisting}
+    Select Id
+    From Group
+    Order by CreatedOn Desc
+\end{lstlisting}
+
+\subsection{Total Obtained Marks Against Group}
+\begin{lstlisting}
+    Select Id, count(Obtained Marks)
+    From Group 
+    Join GroupEvaluation GE
+    Group by GroupId
+\end{lstlisting}
+
+
+\subsection{Show Student with its Advisor}
+\begin{lstlisting}
+    Select Student.Id, PA.Id
+    From Student S
+    Join GroupStudent GS
+    ON GS.GroupId = S.Id
+    Join GameProject GP
+    ON GP.GroupId = S.GroupId
+    Joni ProjectAdvisor PA
+    ON PA.ProjectId = GP.ProjectId
+\end{lstlisting}
+
+
+\subsection{Group created more than 1 years ago}
+\begin{lstlisting}
+    Select Id
+    From Group
+    Where Year(CreatedON) < 2022
+\end{lstlisting}
+
+\subsection{List the name of all males in person}
+\begin{lstlisting}
+    Select FirstName,Lastname
+    from Person
+    Join Lookup
+    ON Person.Id = Person.Id
+    where Catogary='Gender' And
+        Value = 'Male'
+\end{lstlisting}
+
+\subsection{Show Group Project Specified to a field or Title}
+\begin{lstlisting}
+    Select Id 
+    From Project,GroupProject GP
+    where Project.Id = 'GP.ProjectID' And
+        Project.Title = 'Any Title'
+\end{lstlisting}
+
+\end{document}

@@ -14,3 +14,7 @@ E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP M
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.csproj.CoreCompileInputs.cache
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.exe
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.pdb
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\StudentCRUD.g.cs
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\App.baml
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\StudentCRUD.baml
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\GeneratedInternalTypeHelper.g.cs

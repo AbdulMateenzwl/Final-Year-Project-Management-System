@@ -4,6 +4,31 @@
              xmlns:local="clr-namespace:FYP_MS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+            <SolidColorBrush x:Key="First Text Color" Color="#E9EFC0"></SolidColorBrush>
+            <SolidColorBrush x:Key="Second Text Color" Color="#B4E197"></SolidColorBrush>
+            <SolidColorBrush x:Key="Basic Text Color" Color="#000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="Theme Text Color" Color="#6bc76d"></SolidColorBrush>
+            <SolidColorBrush x:Key="Background Color" Color="#4E944F"></SolidColorBrush>
+
+
+            <!--// <Brush x:Key="light_grey"></Brush>-->
+            <Style TargetType="Label" x:Key="title">
+                <Setter Property="Foreground" Value="{StaticResource First Text Color}"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="s_options">
+                <Setter Property="Foreground" Value="{StaticResource Basic Text Color}"></Setter>
+                <Setter Property="FontSize" Value="11"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+                <Setter Property="BorderBrush" Value="{StaticResource Theme Text Color}"></Setter>
+                <Setter Property="BorderThickness" Value="4" ></Setter>
+
+            </Style>
+            <Style TargetType="StackPanel" x:Key="sidemenu">
+                <Setter Property="Background" Value="{StaticResource Background Color}"></Setter>
+            </Style>
+
     </Application.Resources>
 </Application>

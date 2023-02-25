@@ -30,5 +30,13 @@ namespace FYP_MS
             addStu.ShowDialog();
             
         }
+        private void UpdateStudent_Click(object sender, RoutedEventArgs e)
+        {
+            AddStu addStu = new AddStu(true);
+            addStu.ShowDialog();
+
+
+        }
+
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:FYP_MS"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
     
     <DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  DockPanel.Dock="Left" Width="150" >

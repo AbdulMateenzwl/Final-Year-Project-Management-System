@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FYP_MS"
-        mc:Ignorable="d"
-       d:DesignHeight="250" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" 
-      Title="Page1" Height="250" Width="500">
+        mc:Ignorable="d" 
+       d:DesignHeight="250" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
+      Title="Stu Edit" Height="250" Width="500" BorderBrush="Transparent" BorderThickness="10" >
+
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
+    </Window.Effect>
 
     <Canvas Background="{StaticResource Light Theme Text Color}">
+
         <Label Content="First Name" Canvas.Left="25" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="105" Text="" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="Last Name" Canvas.Left="251" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -21,10 +26,12 @@
         <TextBox Canvas.Left="105"  Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="Gender" Canvas.Left="260" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="340" Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Button Content="Button" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}"/>
-        <Button Content="Button" Canvas.Left="165" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}"/>
+        <Button Content="Cancel" Canvas.Left="165" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
         <DatePicker Canvas.Left="105" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
         <Label Content="D.O.B" Canvas.Left="39" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-
     </Canvas>
+
+
 </Window>
+    

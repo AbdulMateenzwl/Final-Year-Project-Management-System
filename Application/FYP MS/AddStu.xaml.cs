@@ -17,11 +17,22 @@ namespace FYP_MS
     /// <summary>
     /// Interaction logic for AddStu.xaml
     /// </summary>
+    /// 
+
     public partial class AddStu : Window
     {
+        private bool update = false;
         public AddStu()
         {
             InitializeComponent();
+        }
+        public AddStu(bool flag)
+        {
+            InitializeComponent();
+            update = true;
+            donebtn.Content = "Update Student";
+            donebtn.Width += 20;
+            // Assign values to the boxes
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

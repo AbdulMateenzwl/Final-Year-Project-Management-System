@@ -13,7 +13,7 @@
                 <Label Content="Enter Student Name"></Label>
                 <TextBox Width="200" Height="20"></TextBox>
                 <Button Content="Clear Text" Margin="5"></Button>
-                <Button Content="Add Student" Margin="5"></Button>
+                <Button Content="Add Student" Margin="5" Click="Button_Click"></Button>
             </StackPanel>
                 
             <DataGrid Margin="5">

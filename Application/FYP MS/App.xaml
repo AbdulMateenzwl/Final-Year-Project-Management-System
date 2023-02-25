@@ -9,6 +9,7 @@
             <SolidColorBrush x:Key="Second Text Color" Color="#B4E197"></SolidColorBrush>
             <SolidColorBrush x:Key="Basic Text Color" Color="#000000"></SolidColorBrush>
             <SolidColorBrush x:Key="Theme Text Color" Color="#6bc76d"></SolidColorBrush>
+        <SolidColorBrush x:Key="Light Theme Text Color" Color="#a5e8a6"></SolidColorBrush>
             <SolidColorBrush x:Key="Background Color" Color="#4E944F"></SolidColorBrush>
 
 
@@ -30,5 +31,38 @@
                 <Setter Property="Background" Value="{StaticResource Background Color}"></Setter>
             </Style>
 
+
+
+        <!--Buttons-->
+        <!--Cancel Button-->
+        <Style TargetType="Button" x:Key="cancelbtn" >
+            <Setter Property="Foreground" Value="{StaticResource First Text Color}"></Setter>
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="red" BorderBrush="#ccc" BorderThickness="0" >
+                                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+        </Style>
+        
+        
+        <!--Enter Button-->
+        <Style TargetType="Button" x:Key="donebtn" >
+            <Setter Property="Foreground" Value="{StaticResource First Text Color}"></Setter>
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="Green" BorderBrush="#ccc" BorderThickness="0" >
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

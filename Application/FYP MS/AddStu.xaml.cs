@@ -10,24 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for AddStu.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class AddStu : Window
     {
-        public Page1()
+        public AddStu()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

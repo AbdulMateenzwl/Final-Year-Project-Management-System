@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace FYP_MS
 {
     /// <summary>
@@ -23,6 +22,13 @@ namespace FYP_MS
         public StudentCRUD()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddStu addStu = new AddStu();
+            addStu.ShowDialog();
+            
         }
     }
 }

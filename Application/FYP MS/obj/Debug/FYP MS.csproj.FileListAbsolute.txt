@@ -18,3 +18,5 @@ E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP M
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\App.baml
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\StudentCRUD.baml
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.g.cs
+E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.baml

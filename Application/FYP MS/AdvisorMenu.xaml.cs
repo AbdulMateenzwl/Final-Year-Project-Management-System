@@ -12,28 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for StudentCRUD.xaml
+    /// Interaction logic for AdvisorMenu.xaml
     /// </summary>
-    public partial class StudentCRUD : UserControl
+    public partial class AdvisorMenu : UserControl
     {
-        public StudentCRUD()
+        public AdvisorMenu()
         {
             InitializeComponent();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddStu addStu = new AddStu();
-            addStu.ShowDialog();
-            
-        }
-        private void UpdateStudent_Click(object sender, RoutedEventArgs e)
-        {
-            AddStu addStu = new AddStu(true);
-            addStu.ShowDialog();
+
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

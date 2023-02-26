@@ -10,12 +10,12 @@
     
     <DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  DockPanel.Dock="Left" Width="150" >
-            <StackPanel Style="{StaticResource sidemenu}" HorizontalAlignment="Stretch" >
+            <StackPanel Style="{StaticResource sidemenu}" HorizontalAlignment="Stretch">
                 <Label Style="{StaticResource title}">Final Year Project</Label>
                 <Label Style="{StaticResource title}">Management</Label>
                 <Label Style="{StaticResource title}">System</Label>
-                <Label Style="{StaticResource s_options}">Manage Students</Label>
-                <Label Style="{StaticResource s_options}">Manage Advisors</Label>
+                <Label Style="{StaticResource s_options}" x:Name="StuBtn" MouseLeftButtonUp="StuBtn_MouseLeftButtonUp" >Manage Students</Label>
+                <Label Style="{StaticResource s_options}" x:Name="AdvBtn" MouseLeftButtonUp="AdvBtn_MouseLeftButtonUp">Manage Advisors</Label>
                 <Label Style="{StaticResource s_options}">Manage Projects</Label>
                 <Label Style="{StaticResource s_options}">Group Management</Label>
                 <Label Style="{StaticResource s_options}">Assing Project</Label>
@@ -27,8 +27,8 @@
         </ScrollViewer>
             
         
-        <Grid>
-            <uc:StudentCRUD></uc:StudentCRUD>
+        <Grid x:Name="mainField">
+            
         </Grid>
     </DockPanel>
 </Window>

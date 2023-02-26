@@ -20,3 +20,26 @@ E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP M
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.g.cs
 E:\UET\Semester4\DBMS\Projects\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\FYP MS.exe.config
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\FYP MS.exe
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\FYP MS.pdb
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.csproj.AssemblyReference.cache
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.csproj.SuggestedBindingRedirects.cache
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AdvisorMenu.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\MainWindow.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\StudentCRUD.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\App.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS_MarkupCompile.cache
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS_MarkupCompile.lref
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\App.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddStu.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\MainWindow.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\StudentCRUD.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AdvisorMenu.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.g.resources
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP_MS.Properties.Resources.resources
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.csproj.GenerateResource.cache
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.csproj.CoreCompileInputs.cache
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.exe
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.pdb

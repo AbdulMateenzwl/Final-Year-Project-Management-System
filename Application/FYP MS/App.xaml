@@ -64,5 +64,21 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--Normal Button-->
+        <Style TargetType="Button" x:Key="Btntype1">
+            <Setter Property="Foreground" Value="{StaticResource Basic Text Color}"></Setter>
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{StaticResource Light Theme Text Color}" BorderBrush="#ccc" BorderThickness="0" >
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
+    
 </Application>

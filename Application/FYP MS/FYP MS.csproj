@@ -58,10 +58,17 @@
     <Compile Include="AddStu.xaml.cs">
       <DependentUpon>AddStu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdvisorMenu.xaml.cs">
+      <DependentUpon>AdvisorMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
     </Compile>
     <Page Include="AddStu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvisorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

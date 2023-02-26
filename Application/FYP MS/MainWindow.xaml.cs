@@ -24,5 +24,11 @@ namespace FYP_MS
             AdvisorMenu advmenu = new AdvisorMenu();
             mainField.Children.Add(advmenu);
         }
+
+        private void Projectbtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ProjectCRUD projectCRUDproject  = new ProjectCRUD();
+            mainField.Children.Add(projectCRUDproject);
+        }
     }
 }

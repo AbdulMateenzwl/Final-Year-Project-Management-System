@@ -45,3 +45,7 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS.pdb
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddAdv.g.cs
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddAdv.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\ProjectCRUD.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\ProjectCRUD.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddProject.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddProject.baml

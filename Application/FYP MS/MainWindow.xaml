@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:FYP_MS"
-        Title="MainWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="600" Width="1000" MinWidth="800" MinHeight="400" WindowStartupLocation="CenterScreen">
     
     <DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  DockPanel.Dock="Left" Width="150" >
@@ -16,7 +16,7 @@
                 <Label Style="{StaticResource title}">System</Label>
                 <Label Style="{StaticResource s_options}" x:Name="StuBtn" MouseLeftButtonUp="StuBtn_MouseLeftButtonUp" >Manage Students</Label>
                 <Label Style="{StaticResource s_options}" x:Name="AdvBtn" MouseLeftButtonUp="AdvBtn_MouseLeftButtonUp">Manage Advisors</Label>
-                <Label Style="{StaticResource s_options}">Manage Projects</Label>
+                <Label Style="{StaticResource s_options}" x:Name="Projectbtn" MouseLeftButtonUp="Projectbtn_MouseLeftButtonUp">Manage Projects</Label>
                 <Label Style="{StaticResource s_options}">Group Management</Label>
                 <Label Style="{StaticResource s_options}">Assing Project</Label>
                 <Label Style="{StaticResource s_options}">Assign Multiple Advisors</Label>

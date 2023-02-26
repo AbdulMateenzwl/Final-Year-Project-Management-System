@@ -1,0 +1,24 @@
+﻿<Window x:Class="FYP_MS.AddProject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FYP_MS"
+        mc:Ignorable="d" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
+      Title="Stu Edit" Height="260" Width="520" BorderBrush="Transparent" BorderThickness="10">
+    <!---->
+
+
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
+    </Window.Effect>
+
+    <Canvas Background="{StaticResource Light Theme Text Color}">
+        <Label Content="Topic" Canvas.Left="38" Canvas.Top="23" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="98" TextWrapping="Wrap" Canvas.Top="27" Width="180" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center" MaxLength="50"/>
+        <Label Content="Desription" Canvas.Left="39" Canvas.Top="63" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Canvas.Left="43" TextWrapping="Wrap" Canvas.Top="96" Width="421" HorizontalAlignment="Left" VerticalAlignment="Top" Height="133"/>
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="395" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource donebtn}"/>
+        <Button Content="Cancel" Canvas.Left="303" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
+    </Canvas>
+</Window>

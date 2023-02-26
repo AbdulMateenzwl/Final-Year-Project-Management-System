@@ -58,16 +58,26 @@
     <Compile Include="AddAdv.xaml.cs">
       <DependentUpon>AddAdv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddProject.xaml.cs">
+      <DependentUpon>AddProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddStu.xaml.cs">
       <DependentUpon>AddStu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdvisorMenu.xaml.cs">
       <DependentUpon>AdvisorMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectCRUD.xaml.cs">
+      <DependentUpon>ProjectCRUD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
     </Compile>
     <Page Include="AddAdv.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProjectCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StudentCRUD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

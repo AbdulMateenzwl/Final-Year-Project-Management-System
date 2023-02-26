@@ -14,14 +14,14 @@
     
     <Canvas Background="{StaticResource Light Theme Text Color}">
         <Label  Content="First Name" Canvas.Left="25" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox Canvas.Left="105" Text="" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="105" Text="" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
         <Label Content="Last Name" Canvas.Left="259" Canvas.Top="27" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox Canvas.Left="340" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox Canvas.Left="105"  Text="" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Label Content="Contact No." Canvas.Left="22" Canvas.Top="69" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="340" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
+        <TextBox Canvas.Left="105"  Text="" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="11"/>
+        <Label Content="Contact No." Canvas.Left="22" Canvas.Top="69" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <TextBox Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Label Content="Email" Canvas.Left="39" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox Canvas.Left="105"  Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="Email" Canvas.Left="39" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBox Canvas.Left="105"  Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="30"/>
         <Label Content="Gender" Canvas.Left="257" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBox Canvas.Left="340" Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}"/>

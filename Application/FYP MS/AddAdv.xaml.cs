@@ -15,31 +15,31 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for AddStu.xaml
+    /// Interaction logic for AddAdv.xaml
     /// </summary>
-    /// 
-
-    public partial class AddStu : Window
+    public partial class AddAdv : Window
     {
-        private bool update = false;
-        public AddStu(bool flag=false)
+        private bool update=false;
+        public AddAdv(bool flag= false)
         {
             InitializeComponent();
-            this.update = flag;
-            if(update)
+            update = flag;
+            if (update)
             {
                 InitializeComponent();
-                donebtn.Content = "Update Student";
+                donebtn.Content = "Update Advisor";
                 donebtn.Width += 20;
                 // Assign values to the boxes
             }
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        
+
+
     }
 }

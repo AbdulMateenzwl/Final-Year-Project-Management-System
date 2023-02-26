@@ -68,6 +68,7 @@
         <Style TargetType="Button" x:Key="Btntype1">
             <Setter Property="Foreground" Value="{StaticResource Basic Text Color}"></Setter>
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
             
             <Setter Property="Template">
                 <Setter.Value>

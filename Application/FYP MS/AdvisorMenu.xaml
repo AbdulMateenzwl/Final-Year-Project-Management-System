@@ -8,12 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel Background="AliceBlue">
         <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5" >
-                <Label Content="Enter Advisor Name"></Label>
+            <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Center" >
+                <Label Content="Enter Advisor Name" Margin="10 10 5 10"></Label>
                 <TextBox Width="200" Height="20"></TextBox>
                 <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
-                <Button Content="Add Advisor" Margin="5" Width="80" Style="{StaticResource Btntype1}"></Button>
-                <Button Content="Update Advisor" Margin="5" Width="100" Style="{StaticResource Btntype1}"></Button>
+                <Button Content="Add Advisor" Margin="5" Width="80" Style="{StaticResource Btntype1}" Click="Button_Click_3"></Button>
+                <Button Content="Update Advisor" Margin="5" Width="100" Style="{StaticResource Btntype1}" Click="Button_Click_4"></Button>
             </StackPanel>
 
             <DataGrid Margin="5">

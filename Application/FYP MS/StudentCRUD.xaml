@@ -9,17 +9,17 @@
             
     <DockPanel Background="AliceBlue" >
         <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5" >
-                <Label Content="Enter Student Name"></Label>
+            <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Center">
+                <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
                 <TextBox Width="200" Height="20"></TextBox>
                 <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}"></Button>
             </StackPanel>
                 
-            <DataGrid Margin="5">
+            <ListView x:Name="Grid" Margin="5">
                     
-            </DataGrid>
+            </ListView>
                 
         </StackPanel>
             

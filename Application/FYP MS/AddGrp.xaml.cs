@@ -15,15 +15,14 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for AddGrp.xaml
     /// </summary>
-    public partial class UserControl1 : Window
+    public partial class AddGrp : Window
     {
-        public UserControl1()
+        public AddGrp()
         {
             InitializeComponent();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

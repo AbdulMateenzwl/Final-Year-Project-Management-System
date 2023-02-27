@@ -58,6 +58,9 @@
     <Compile Include="AddAdv.xaml.cs">
       <DependentUpon>AddAdv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddGrp.xaml.cs">
+      <DependentUpon>AddGrp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddProject.xaml.cs">
       <DependentUpon>AddProject.xaml</DependentUpon>
     </Compile>
@@ -79,10 +82,11 @@
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddGroup.xaml.cs">
-      <DependentUpon>AddGroup.xaml</DependentUpon>
-    </Compile>
     <Page Include="AddAdv.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddGrp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,10 +127,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentCRUD.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

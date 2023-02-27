@@ -13,7 +13,14 @@
             <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
             <Button Content="Assign Project" Margin="0,5,0,5" Width="80" Style="{StaticResource Btntype1}" DockPanel.Dock="Right"/>
         </DockPanel>
-
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Content="Select Group" Margin="15,5,5,5"/>
+            <Label Content="Select Project" Margin="15,5,5,5" Grid.Column="1"/>
+        </Grid>
         <Grid DockPanel.Dock="Top" >
             <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -35,9 +42,9 @@
         <Grid DockPanel.Dock="Top" Margin="0,0,0,5" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
@@ -45,7 +52,7 @@
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -53,16 +60,16 @@
                     </Grid.ColumnDefinitions>
                     <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
                     <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,5,0,5" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
                 </Grid>
-                <ListView x:Name="Grid2"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" Grid.Row="1" />
+                <ListView x:Name="Grid2"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,0,0,0" Grid.Row="1" />
             </Grid>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -70,16 +77,16 @@
                     </Grid.ColumnDefinitions>
                     <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
                     <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,5,0,5" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
                 </Grid>
-                <ListView x:Name="Grid3"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" Grid.Row="1" />
+                <ListView x:Name="Grid3"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" />
             </Grid>
             <Grid Grid.Column="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="4*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -87,11 +94,11 @@
                     </Grid.ColumnDefinitions>
                     <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
                     <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,5,0,5" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
                 </Grid>
-                <ListView x:Name="Grid4"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" Grid.Row="1" />
+                <ListView x:Name="Grid4"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" Margin="0,0,10,0" />
             </Grid>
-
+            
         </Grid>
     </DockPanel>
 </UserControl>

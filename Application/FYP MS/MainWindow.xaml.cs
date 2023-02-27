@@ -33,8 +33,8 @@ namespace FYP_MS
 
         private void GroupManagebtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ProjectCRUD projectCRUDproject = new ProjectCRUD();
-            mainField.Children.Add(projectCRUDproject);
+            GroupCRUD projectCRUD = new GroupCRUD();
+            mainField.Children.Add(projectCRUD);
         }
 
         private void AssignProjectbtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

@@ -27,14 +27,9 @@ namespace FYP_MS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddProject addp = new AddProject();
-            addp.ShowDialog();
+            AddGrp addGrp = new AddGrp();
+            addGrp.ShowDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AddProject addp = new AddProject();
-            addp.ShowDialog();
-        }
     }
 }

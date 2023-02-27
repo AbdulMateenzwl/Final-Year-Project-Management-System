@@ -16,10 +16,8 @@
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}"></Button>
             </WrapPanel>
-                
-            <ListView x:Name="Grid" Margin="5">
-                    
-            </ListView>
+
+            <DataGrid x:Name="Grid" Margin="5" Height="300"></DataGrid> 
                 
         </StackPanel>
             

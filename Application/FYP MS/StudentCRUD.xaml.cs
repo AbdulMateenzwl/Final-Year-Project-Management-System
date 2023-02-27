@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
+using System.ComponentModel;
+using System.Drawing;
+
+using Lab2_GettingStartedWithDatabase;
+using System.Windows.Markup;
+
 namespace FYP_MS
 {
     /// <summary>
@@ -35,12 +44,8 @@ namespace FYP_MS
         public StudentCRUD()
         {
             InitializeComponent();
-            /*data dat1 = new data(1, 2, 3);
-            data dat2 = new data(4, 5, 6);
-            data dat3 = new data(7, 8, 9);
-            List<data> list = new List<data>() { dat1, dat2, dat3 };
-            Grid.ItemsSource = list;
-            Grid.DataContext= list;*/
+
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -50,8 +55,19 @@ namespace FYP_MS
         }
         private void UpdateStudent_Click(object sender, RoutedEventArgs e)
         {
-            AddStu addStu = new AddStu(true);
-            addStu.ShowDialog();
+            /*AddStu addStu = new AddStu(true);
+            addStu.ShowDialog();*/
+
+
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand("Select * from Student", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            Grid.ItemsSource = dt.DefaultView;
+
         }
 
     }

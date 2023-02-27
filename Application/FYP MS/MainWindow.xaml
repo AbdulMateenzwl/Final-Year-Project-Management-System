@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:FYP_MS"
         Title="MainWindow" Height="600" Width="1000" MinWidth="800" MinHeight="400" WindowStartupLocation="CenterScreen">
     
-    <DockPanel>
+    <DockPanel LastChildFill="True">
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  DockPanel.Dock="Left" Width="150" >
             <StackPanel Style="{StaticResource sidemenu}" HorizontalAlignment="Stretch">
                 <Label Style="{StaticResource title}">Final Year Project</Label>

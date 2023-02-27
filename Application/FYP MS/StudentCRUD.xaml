@@ -14,7 +14,9 @@
                 <TextBox Width="200" Height="20" Margin="5"></TextBox>
                 <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
-                <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}"></Button>
+                <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}" >
+                    
+                </Button>
             </WrapPanel>
 
             <DataGrid x:Name="Grid" Margin="5" Height="300"></DataGrid> 

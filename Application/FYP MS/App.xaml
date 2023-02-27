@@ -9,7 +9,7 @@
             <SolidColorBrush x:Key="Second Text Color" Color="#B4E197"></SolidColorBrush>
             <SolidColorBrush x:Key="Basic Text Color" Color="#000000"></SolidColorBrush>
             <SolidColorBrush x:Key="Theme Text Color" Color="#6bc76d"></SolidColorBrush>
-        <SolidColorBrush x:Key="Light Theme Text Color" Color="#a5e8a6"></SolidColorBrush>
+            <SolidColorBrush x:Key="Light Theme Text Color" Color="#a5e8a6"></SolidColorBrush>
             <SolidColorBrush x:Key="Background Color" Color="#4E944F"></SolidColorBrush>
 
 
@@ -76,6 +76,44 @@
                         <Border CornerRadius="10" Background="{StaticResource Light Theme Text Color}" BorderBrush="#ccc" BorderThickness="0" >
                             <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
+                    </ControlTemplate>
+                    
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--TEXT box-->
+        <!--<Style TargetType="Button">
+                <Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="7" />
+                    </Style>
+                </Style.Resources>
+        </Style>-->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Rectangle x:Name="PART_Border" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Fill="{TemplateBinding Background}" RadiusX="5" RadiusY="5"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,5,0" VerticalAlignment="Center" Background="Transparent" Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="PART_Border" Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="PART_Border" Property="Stroke" Value="{StaticResource Background Color}"/>
+                                <Setter TargetName="PART_Border" Property="StrokeThickness" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="PART_Border" Property="Stroke" Value="{StaticResource Background Color}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

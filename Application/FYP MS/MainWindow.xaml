@@ -17,7 +17,7 @@
                 <Label Style="{StaticResource s_options}" x:Name="StuBtn" MouseLeftButtonUp="StuBtn_MouseLeftButtonUp" >Manage Students</Label>
                 <Label Style="{StaticResource s_options}" x:Name="AdvBtn" MouseLeftButtonUp="AdvBtn_MouseLeftButtonUp">Manage Advisors</Label>
                 <Label Style="{StaticResource s_options}" x:Name="Projectbtn" MouseLeftButtonUp="Projectbtn_MouseLeftButtonUp">Manage Projects</Label>
-                <Label Style="{StaticResource s_options}">Group Management</Label>
+                <Label Style="{StaticResource s_options}" x:Name="GroupManagebtn" MouseLeftButtonUp="GroupManagebtn_MouseLeftButtonUp">Group Management</Label>
                 <Label Style="{StaticResource s_options}">Assing Project</Label>
                 <Label Style="{StaticResource s_options}">Assign Multiple Advisors</Label>
                 <Label Style="{StaticResource s_options}">Manage Evaluations</Label>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="FYP_MS.UserControl1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FYP_MS"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
+      Title="Stu Edit" Height="350" Width="600" BorderBrush="Transparent"  >
+
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
+    </Window.Effect>
+
+    <Canvas Background="{StaticResource Light Theme Text Color}">
+
+        <Label Content="Search" Canvas.Left="15" Canvas.Top="23" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="65" Text="" Canvas.Top="27" Width="136" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="513" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}"/>
+        <Button Content="Cancel" Canvas.Left="420" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click "/>
+        <StackPanel Orientation="Horizontal"  Height="255" Canvas.Left="15" Canvas.Top="85" HorizontalAlignment="Center" Width="572" VerticalAlignment="Top">
+            <ListView Width="265" Margin="10"></ListView>
+            <ListView Width="265" Margin="10"></ListView>
+        </StackPanel>
+        <Label Content="Select Student " Canvas.Left="22" Canvas.Top="67" HorizontalAlignment="Left" VerticalAlignment="Center" Width="87"/>
+        <Label Content="Selected Student " Canvas.Left="307" Canvas.Top="67" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    </Canvas>
+
+</Window>

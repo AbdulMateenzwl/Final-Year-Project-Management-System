@@ -30,5 +30,11 @@ namespace FYP_MS
             ProjectCRUD projectCRUDproject  = new ProjectCRUD();
             mainField.Children.Add(projectCRUDproject);
         }
+
+        private void GroupManagebtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ProjectCRUD projectCRUDproject = new ProjectCRUD();
+            mainField.Children.Add(projectCRUDproject);
+        }
     }
 }

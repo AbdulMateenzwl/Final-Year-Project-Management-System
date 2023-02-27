@@ -67,11 +67,17 @@
     <Compile Include="AdvisorMenu.xaml.cs">
       <DependentUpon>AdvisorMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupCRUD.xaml.cs">
+      <DependentUpon>GroupCRUD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProjectCRUD.xaml.cs">
       <DependentUpon>ProjectCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddGroup.xaml.cs">
+      <DependentUpon>AddGroup.xaml</DependentUpon>
     </Compile>
     <Page Include="AddAdv.xaml">
       <SubType>Designer</SubType>
@@ -86,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdvisorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupCRUD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -67,6 +67,9 @@
     <Compile Include="AdvisorMenu.xaml.cs">
       <DependentUpon>AdvisorMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AssignProject.xaml.cs">
+      <DependentUpon>AssignProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupCRUD.xaml.cs">
       <DependentUpon>GroupCRUD.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdvisorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssignProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

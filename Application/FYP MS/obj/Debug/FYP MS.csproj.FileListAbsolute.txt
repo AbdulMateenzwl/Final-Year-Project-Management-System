@@ -53,3 +53,5 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddGroup.g.cs
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\GroupCRUD.baml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddGroup.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AssignProject.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AssignProject.baml

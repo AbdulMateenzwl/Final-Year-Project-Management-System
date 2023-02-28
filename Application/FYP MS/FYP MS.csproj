@@ -74,16 +74,20 @@
     <Compile Include="AssignProject.xaml.cs">
       <DependentUpon>AssignProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="HelperClasses\Configuration.cs" />
     <Compile Include="GroupCRUD.xaml.cs">
       <DependentUpon>GroupCRUD.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\Lookup.cs" />
     <Compile Include="HelperClasses\Person_Helper.cs" />
     <Compile Include="ProjectCRUD.xaml.cs">
       <DependentUpon>ProjectCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="updateStu.xaml.cs">
+      <DependentUpon>updateStu.xaml</DependentUpon>
     </Compile>
     <Page Include="AddAdv.xaml">
       <SubType>Designer</SubType>
@@ -130,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="updateStu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

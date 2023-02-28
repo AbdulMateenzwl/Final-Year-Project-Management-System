@@ -13,9 +13,17 @@ namespace FYP_MS
     {
         public static int addPerson(string FirstName,string LastName,string Contact,string email,DateTime dateTime,int gender)
         {
-            // ADD Perons to DateBase \\ id is assigned by DB
-
-            // return the id assigned by db  
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into person values(@firstname,@lastname,@contact,@email,@date,@gender)", con);
+            cmd.Parameters.AddWithValue("firstname", FirstName);
+            cmd.Parameters.AddWithValue("lastname", LastName);
+            cmd.Parameters.AddWithValue("contact", Contact);
+            cmd.Parameters.AddWithValue("email", email);
+            cmd.Parameters.AddWithValue("date", dateTime);
+            cmd.Parameters.AddWithValue("gender", gender);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
             return getLastPersonId();
         }
         public static int getLastPersonId()
@@ -29,7 +37,7 @@ namespace FYP_MS
         public static DataTable GetFullTable()
         {
             var con = Config.getConnection();
-            SqlCommand cmd = new SqlCommand("Select * from Student", con);
+            SqlCommand cmd = new SqlCommand("Select * from person", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();

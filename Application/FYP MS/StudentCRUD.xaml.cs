@@ -55,11 +55,34 @@ namespace FYP_MS
         {
             /*AddStu addStu = new AddStu(true);
             addStu.ShowDialog();*/
+            DataRowView row = Grid.SelectedItem as DataRowView;
+            if(row==null)
+            {
+                MessageBox.Show("Please Select a value from Table", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MessageBox.Show(row.Row.ItemArray[1].ToString());
+            }
         }
         private void loadData()
         {
             Grid.ItemsSource = Person_Helper.GetFullTable().DefaultView;
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Open add user form with values from the table
+        }
+
+        private void clearTxt_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBar.Text = "";
+        }
     }
 }

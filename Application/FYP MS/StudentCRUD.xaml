@@ -8,21 +8,36 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <DockPanel Background="AliceBlue" >
-        <Grid DockPanel.Dock="Top">
+        <Grid DockPanel.Dock="Top" UseLayoutRounding="False" Cursor="Hand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <WrapPanel>
                 <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
-                <TextBox Width="200" Height="20" Margin="5"></TextBox>
-                <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
+                <TextBox x:Name="SearchBar" Width="200" Height="20" Margin="5"></TextBox>
+                <Button Content="Clear Text" x:Name="clearTxt" Margin="5" Width="70" Click="clearTxt_Click" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}" >
                 </Button>
             </WrapPanel>
             
-            <DataGrid Grid.Row="1" x:Name="Grid" Margin="5" ></DataGrid>
+            <DataGrid Grid.Row="1" x:Name="Grid" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="Grid_MouseDoubleClick">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu>
+                                    <Menu>
+                                        <MenuItem Header="Edit" Click="MenuItem_Click"/>
+                                    </Menu>
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.Resources>
+                
+            </DataGrid>
 
         </Grid>
 

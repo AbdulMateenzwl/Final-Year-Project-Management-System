@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FYP_MS.HelperClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,14 +26,10 @@ namespace FYP_MS
         public AddStu(bool flag=false)
         {
             InitializeComponent();
-            this.update = flag;
-            if(update)
-            {
-                InitializeComponent();
-                donebtn.Content = "Update Student";
-                donebtn.Width += 20;
-                // Assign values to the boxes
-            }
+            Datepicker.SelectedDate= DateTime.Now;
+            // Assign values to combox
+            CmboxGender.ItemsSource=Lookup.getGenders();
+            CmboxGender.SelectedIndex=0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,6 +37,32 @@ namespace FYP_MS
             this.Close();
         }
 
-        
+        private void donebtn_Click(object sender, RoutedEventArgs e)
+        {
+            // validation
+            //if (validate())
+            {
+                Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
+            }
+        }
+        private bool validate()
+        {
+            /*if(GetDifferenceInYears(DateTime.Now , Datepicker.SelectedDate.Value) >= 16)
+            {
+                return false;
+            }*/
+            if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
+            {
+                MessageBox.Show(CmboxGender.SelectedValue.ToString());
+                return false;
+            }
+            return true;
+        }
+        int GetDifferenceInYears(DateTime startDate, DateTime endDate)
+        {
+            return (endDate.Year - startDate.Year - 1) +
+                (((endDate.Month > startDate.Month) ||
+                ((endDate.Month == startDate.Month) && (endDate.Day >= startDate.Day))) ? 1 : 0);
+        }
     }
 }

@@ -17,8 +17,6 @@ using System.Windows.Shapes;
 using System.Configuration;
 using System.ComponentModel;
 using System.Drawing;
-
-using Lab2_GettingStartedWithDatabase;
 using System.Windows.Markup;
 
 namespace FYP_MS
@@ -44,7 +42,7 @@ namespace FYP_MS
         public StudentCRUD()
         {
             InitializeComponent();
-
+            loadData();
             
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -57,17 +55,10 @@ namespace FYP_MS
         {
             /*AddStu addStu = new AddStu(true);
             addStu.ShowDialog();*/
-
-
-            var con = Config.getConnection();
-            SqlCommand cmd = new SqlCommand("Select * from Student", con);
-            DataTable dt = new DataTable();
-            con.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dt.Load(sdr);
-            con.Close();
-            Grid.ItemsSource = dt.DefaultView;
-
+        }
+        private void loadData()
+        {
+            Grid.ItemsSource = Person_Helper.GetFullTable().DefaultView;
         }
 
     }

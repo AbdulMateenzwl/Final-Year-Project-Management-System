@@ -1,4 +1,5 @@
 ﻿using FYP_MS.HelperClasses;
+using FYP_MS.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,36 +53,35 @@ namespace FYP_MS
                     Stu_Helper.updateStu(RegNo.Text, Pid);
                     this.Close();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("There is an error while updating the record", "Alert",MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("There is an error while updating the record "+ex, "Alert",MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show("Empty Values");
-            }
         }
-
-
         private bool validate()
         {
-            if (GetDifferenceInYears(DateTime.Now, Datepicker.SelectedDate.Value) >= 16)
+            if (!validations.age16plus(Datepicker.SelectedDate.Value))
             {
-                MessageBox.Show("Age is not valid");
+                MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
-            if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
+            if (!validations.name(FirstName.Text) || !validations.name(LastName.Text))
             {
+                MessageBox.Show("Name is Empty", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            if (!validations.contact(ContactNo.Text))
+            {
+                MessageBox.Show("Contact Number length Must be 11 and should not Contain characters", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            if (!validations.email(Email.Text))
+            {
+                MessageBox.Show("InValid Email Address", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             return true;
-        }
-        int GetDifferenceInYears(DateTime startDate, DateTime endDate)
-        {
-            return (endDate.Year - startDate.Year - 1) +
-                (((endDate.Month > startDate.Month) ||
-                ((endDate.Month == startDate.Month) && (endDate.Day >= startDate.Day))) ? 1 : 0);
         }
     }
 }

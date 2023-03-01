@@ -90,6 +90,7 @@
     <Compile Include="updateStu.xaml.cs">
       <DependentUpon>updateStu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validations\validations.cs" />
     <Page Include="AddAdv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

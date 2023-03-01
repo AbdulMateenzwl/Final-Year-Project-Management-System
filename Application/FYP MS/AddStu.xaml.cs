@@ -42,18 +42,23 @@ namespace FYP_MS
             // validation
             //if (validate())
             {
-                Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
+                int ans = Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
+                MessageBox.Show(ans.ToString());
             }
+            /*else
+            {
+                MessageBox.Show("Empty Values");
+            }*/
         }
         private bool validate()
         {
-            /*if(GetDifferenceInYears(DateTime.Now , Datepicker.SelectedDate.Value) >= 16)
+            if (GetDifferenceInYears(DateTime.Now, Datepicker.SelectedDate.Value) >= 16)
             {
+                MessageBox.Show("Age is not valid");
                 return false;
-            }*/
-            if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
+            }
+             if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
             {
-                MessageBox.Show(CmboxGender.SelectedValue.ToString());
                 return false;
             }
             return true;

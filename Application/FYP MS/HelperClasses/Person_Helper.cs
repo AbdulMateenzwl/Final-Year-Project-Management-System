@@ -11,7 +11,7 @@ namespace FYP_MS
 {
     public static class Person_Helper
     {
-        public static int addPerson(string FirstName,string LastName,string Contact,string email,DateTime dateTime,int gender)
+        public static void addPerson(string FirstName,string LastName,string Contact,string email,DateTime dateTime,int gender)
         {
             var con = Config.getConnection();
             con.Open();
@@ -23,15 +23,23 @@ namespace FYP_MS
             cmd.Parameters.AddWithValue("date", dateTime);
             cmd.Parameters.AddWithValue("gender", gender);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
             con.Close();
-            return getLastPersonId();
         }
         public static int getLastPersonId()
         {
-            return 0;
+            string insertSql = "SELECT MAX(ID) AS LastID FROM Person";
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(insertSql, con);
+            int ans = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+            return ans;
         }
         public static bool update(string FirstName, string LastName, string Contact, string email, DateTime dateTime, int gender,int PersonID)
         {
+
             return true;
         }
         public static DataTable GetFullTable()

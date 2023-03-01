@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <WrapPanel>
                 <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
-                <TextBox x:Name="SearchBar" Width="200" Height="20" Margin="5"></TextBox>
+                <TextBox x:Name="SearchBar" Width="200" Height="20" Margin="5" TextChanged="SearchBar_TextChanged"></TextBox>
                 <Button Content="Clear Text" x:Name="clearTxt" Margin="5" Width="70" Click="clearTxt_Click" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Update Student" Margin="5" Click="UpdateStudent_Click" Width="100" Style="{StaticResource Btntype1}" >

@@ -37,10 +37,23 @@ namespace FYP_MS
             con.Close();
             return ans;
         }
-        public static bool update(string FirstName, string LastName, string Contact, string email, DateTime dateTime, int gender,int PersonID)
+        public static void updatePerson(string FN, string LN, string C, string E, DateTime DT, int G,int PID)
         {
-
-            return true;
+            string Text = "UPDATE Person SET firstname = @FirstName_, LastName = @LastName_, Contact = @cont_,Email =@email_,DateOfBirth = @dTime_,gender =@Gdr_ Where id = @id_";
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(Text, con);
+            cmd.Parameters.AddWithValue("FirstName_", FN);
+            cmd.Parameters.AddWithValue("LastName_", LN);
+            cmd.Parameters.AddWithValue("cont_", C);
+            cmd.Parameters.AddWithValue("email_", E);
+            cmd.Parameters.AddWithValue("dTime_", DT);
+            cmd.Parameters.AddWithValue("Gdr_", G);
+            cmd.Parameters.AddWithValue("id_", PID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
         }
         public static DataTable GetFullTable()
         {

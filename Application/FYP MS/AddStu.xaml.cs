@@ -22,8 +22,7 @@ namespace FYP_MS
 
     public partial class AddStu : Window
     {
-        private bool update = false;
-        public AddStu(bool flag=false)
+        public AddStu()
         {
             InitializeComponent();
             Datepicker.SelectedDate= DateTime.Now;
@@ -40,15 +39,15 @@ namespace FYP_MS
         private void donebtn_Click(object sender, RoutedEventArgs e)
         {
             // validation
-            //if (validate())
+            if (validate())
             {
-                int ans = Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
-                MessageBox.Show(ans.ToString());
+                Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
+                Stu_Helper.addStudent(Person_Helper.getLastPersonId(), RegNo.Text);
             }
-            /*else
+            else
             {
                 MessageBox.Show("Empty Values");
-            }*/
+            }
         }
         private bool validate()
         {
@@ -57,7 +56,7 @@ namespace FYP_MS
                 MessageBox.Show("Age is not valid");
                 return false;
             }
-             if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
+            if (FirstName.Text == "" || LastName.Text == "" || ContactNo.Text == "" || Email.Text == "")
             {
                 return false;
             }

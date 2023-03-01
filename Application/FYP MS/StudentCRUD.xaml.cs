@@ -18,6 +18,8 @@ using System.Configuration;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Markup;
+using FYP_MS.HelperClasses;
+using System.Collections.ObjectModel;
 
 namespace FYP_MS
 {
@@ -25,36 +27,22 @@ namespace FYP_MS
     /// Interaction logic for StudentCRUD.xaml
     /// </summary>
     /// 
-    public class data
-    {
-        public int time;
-        public int date;
-        public int year;
-        public data(int time, int date, int year)
-        {
-            this.time = time;
-            this.date = date;
-            this.year = year;
-        }
-    }
     public partial class StudentCRUD : UserControl
     {
         public StudentCRUD()
         {
             InitializeComponent();
             loadData();
-            
+            Grid.Loaded += Grid_Loaded;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddStu addStu = new AddStu();
             addStu.ShowDialog();
-            
+            loadData();
         }
         private void UpdateStudent_Click(object sender, RoutedEventArgs e)
         {
-            /*AddStu addStu = new AddStu(true);
-            addStu.ShowDialog();*/
             DataRowView row = Grid.SelectedItem as DataRowView;
             if(row==null)
             {
@@ -62,14 +50,22 @@ namespace FYP_MS
             }
             else
             {
-                MessageBox.Show(row.Row.ItemArray[1].ToString());
+                updateStu ustu = new updateStu(row.Row.ItemArray[1].ToString(), row.Row.ItemArray[2].ToString(), row.Row.ItemArray[3].ToString(), row.Row.ItemArray[4].ToString(), row.Row.ItemArray[5].ToString(), (DateTime)row.Row.ItemArray[6],(row.Row.ItemArray[7].ToString()), (int)row.Row.ItemArray[0]);
+                ustu.ShowDialog();
+                loadData();
             }
         }
         private void loadData()
         {
-            Grid.ItemsSource = Person_Helper.GetFullTable().DefaultView;
+            try
+            {
+                Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
+            }
+            catch(Exception e) 
+            {
+                MessageBox.Show("Error loading data from Database "+e, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
@@ -77,12 +73,23 @@ namespace FYP_MS
 
         private void Grid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            // Open add user form with values from the table
+            
         }
 
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = "";
+        }
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Grid.Columns[0].Visibility = Visibility.Collapsed;
+
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // data changes as text changes
+            // Grid.ItemsSource = 
         }
     }
 }

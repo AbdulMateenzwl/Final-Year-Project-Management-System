@@ -23,21 +23,7 @@ namespace FYP_MS
     {
         public AssignProject()
         {
-            InitializeComponent();
-            data dat1 = new data(1, 2, 3);
-            data dat2 = new data(4, 5, 6);
-            data dat3 = new data(7, 8, 9);
-            List<data> list = new List<data>() { dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 , dat1, dat2, dat3 };
-/*            Grid.ItemsSource = list;
-            Grid.DataContext = list;
-            Grid1.ItemsSource = list;
-            Grid1.DataContext = list;
-            Grid2.ItemsSource = list;
-            Grid2.DataContext = list;
-            Grid3.ItemsSource = list;
-            Grid3.DataContext = list;
-            Grid4.ItemsSource = list;
-            Grid4.DataContext = list;*/
+           
         }
     }
 }

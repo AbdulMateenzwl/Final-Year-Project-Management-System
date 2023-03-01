@@ -14,7 +14,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <WrapPanel>
-                <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
+                <Label Margin="10 10 0 10" Content="Search"></Label>
                 <TextBox x:Name="SearchBar" Width="200" Height="20" Margin="5" TextChanged="SearchBar_TextChanged"></TextBox>
                 <Button Content="Clear Text" x:Name="clearTxt" Margin="5" Width="70" Click="clearTxt_Click" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Student" Margin="5" Click="Button_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
@@ -22,21 +22,8 @@
                 </Button>
             </WrapPanel>
             
-            <DataGrid Grid.Row="1" x:Name="Grid" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="Grid_MouseDoubleClick">
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridRow">
-                        <Setter Property="ContextMenu">
-                            <Setter.Value>
-                                <ContextMenu>
-                                    <Menu>
-                                        <MenuItem Header="Edit" Click="MenuItem_Click"/>
-                                    </Menu>
-                                </ContextMenu>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </DataGrid.Resources>
-                
+            <DataGrid Grid.Row="1" x:Name="Grid" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="UpdateStudent_Click" >
+               
             </DataGrid>
 
         </Grid>

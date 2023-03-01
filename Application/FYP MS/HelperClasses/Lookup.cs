@@ -36,7 +36,6 @@ namespace FYP_MS.HelperClasses
             con.Open();
             int id = (int)cmd.ExecuteScalar();
             con.Close();
-            MessageBox.Show(id.ToString());
             return id;
         }
     }

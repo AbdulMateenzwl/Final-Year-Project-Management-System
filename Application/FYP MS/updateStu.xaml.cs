@@ -61,14 +61,9 @@ namespace FYP_MS
         }
         private bool validate()
         {
-            if (!validations.age16plus(Datepicker.SelectedDate.Value))
-            {
-                MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
-                return false;
-            }
             if (!validations.name(FirstName.Text) || !validations.name(LastName.Text))
             {
-                MessageBox.Show("Name is Empty", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                MessageBox.Show("Name should atleast be 3 characters", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             if (!validations.contact(ContactNo.Text))
@@ -79,6 +74,11 @@ namespace FYP_MS
             if (!validations.email(Email.Text))
             {
                 MessageBox.Show("InValid Email Address", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            if (!validations.age16plus(Datepicker.SelectedDate.Value))
+            {
+                MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             return true;

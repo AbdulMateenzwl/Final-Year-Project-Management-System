@@ -63,5 +63,33 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
+        public static DataTable Search(string str)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select p.id,p.FirstName,p.LastName,s.RegistrationNo,p.Contact,p.Email,p.DateOfBirth,l.Value as Gender " +
+                    "from student as s " +
+                    "join person as p on s.id = p.id " +
+                    "join lookup as l on p.gender = l.id " +
+                    "where FirstName like @FirstName or " +
+                    "LastName like @lastname or " +
+                    "RegistrationNo like @RegNo or " +
+                    "Email like @email or " +
+                    "contact like @cont_ ", con))
+                { 
+                    cmd.Parameters.AddWithValue("FirstName", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("lastname", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("RegNo", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("Email", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("cont_", string.Format("%{0}%", str));
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+            con.Close();
+        }
     }
 }

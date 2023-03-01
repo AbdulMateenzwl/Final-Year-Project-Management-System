@@ -34,12 +34,15 @@ namespace FYP_MS
             InitializeComponent();
             loadData();
             Grid.Loaded += Grid_Loaded;
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddStu addStu = new AddStu();
             addStu.ShowDialog();
+            SearchBar.Text = null;
             loadData();
+            Grid_Loaded();
         }
         private void UpdateStudent_Click(object sender, RoutedEventArgs e)
         {
@@ -53,43 +56,36 @@ namespace FYP_MS
                 updateStu ustu = new updateStu(row.Row.ItemArray[1].ToString(), row.Row.ItemArray[2].ToString(), row.Row.ItemArray[3].ToString(), row.Row.ItemArray[4].ToString(), row.Row.ItemArray[5].ToString(), (DateTime)row.Row.ItemArray[6],(row.Row.ItemArray[7].ToString()), (int)row.Row.ItemArray[0]);
                 ustu.ShowDialog();
                 loadData();
+                Grid_Loaded();
             }
         }
         private void loadData()
         {
             try
             {
-                Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
+                //Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
+                Grid.ItemsSource = Stu_Helper.Search(SearchBar.Text).DefaultView;
+               
             }
             catch(Exception e) 
             {
                 MessageBox.Show("Error loading data from Database "+e, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Grid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
 
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = "";
         }
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private void Grid_Loaded(object sender=null, RoutedEventArgs e=null)
         {
             Grid.Columns[0].Visibility = Visibility.Collapsed;
-
         }
-
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             // data changes as text changes
-            // Grid.ItemsSource = 
+            loadData();
+            Grid_Loaded();
         }
     }
 }

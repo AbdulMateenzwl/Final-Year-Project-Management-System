@@ -27,7 +27,7 @@
             
         
         <Grid x:Name="mainField">
-            
+            <uc:StudentCRUD></uc:StudentCRUD>
         </Grid>
     </DockPanel>
 </Window>

@@ -14,13 +14,16 @@ namespace FYP_MS.Validations
     {
         public static bool email(string email)
         {
+            if (email.Length >= 30)
+            {
+                return false;
+            }
             string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
-
             return Regex.IsMatch(email, regex, RegexOptions.IgnoreCase);
         }
         public static bool name(string name)
         {
-            return name.Length >= 3;
+            return name.Length >= 3 && name.Length<100;
         }
         public static bool age16plus(DateTime dt)
         {
@@ -34,6 +37,10 @@ namespace FYP_MS.Validations
         }
         public static bool contact(string number)
         {
+            if(number.Length>=20)
+            {
+                return false;
+            }
             int count = 0;
             for(int i=0;i<number.Length;i++)
             {

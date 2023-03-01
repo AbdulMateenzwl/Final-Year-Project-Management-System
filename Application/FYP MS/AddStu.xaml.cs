@@ -41,20 +41,22 @@ namespace FYP_MS
         {
             if (validate())
             {
-                Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
-                Stu_Helper.addStudent(Person_Helper.getLastPersonId(), RegNo.Text);
+                try
+                {
+                    Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
+                    Stu_Helper.addStudent(Person_Helper.getLastPersonId(), RegNo.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("There is an error while updating the record "+ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
         private bool validate()
         {
-            if (!validations.age16plus(Datepicker.SelectedDate.Value))
-            {
-                MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
-                return false;
-            }
             if (!validations.name(FirstName.Text) || !validations.name(LastName.Text))
             {
-                MessageBox.Show("Name is Empty", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                MessageBox.Show("Name should atleast be 3 characters", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             if(!validations.contact(ContactNo.Text))
@@ -65,6 +67,11 @@ namespace FYP_MS
             if (!validations.email(Email.Text))
             {
                 MessageBox.Show("InValid Email Address", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            if (!validations.age16plus(Datepicker.SelectedDate.Value))
+            {
+                MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             return true;

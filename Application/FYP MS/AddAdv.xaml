@@ -11,26 +11,26 @@
     <Window.Effect>
         <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
     </Window.Effect>
-    
+
     <Canvas Background="{StaticResource Light Theme Text Color}">
-        <Label  Content="First Name" Canvas.Left="25" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox Canvas.Left="105" Text="" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
+        <Label   Content="First Name" Canvas.Left="25" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstName" Canvas.Left="105" Text="" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
         <Label Content="Last Name" Canvas.Left="259" Canvas.Top="27" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox Canvas.Left="340" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
-        <TextBox Canvas.Left="105"  Text="" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="11"/>
+        <TextBox x:Name="LastName" Canvas.Left="340" Canvas.Top="31" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="100"/>
+        <TextBox x:Name="ContactNo" Canvas.Left="105"  Text="" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="11"/>
         <Label Content="Contact No." Canvas.Left="22" Canvas.Top="69" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <TextBox Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="73" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Label Content="Email" Canvas.Left="39" Canvas.Top="110" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <TextBox Canvas.Left="105"  Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="30"/>
+        <TextBox x:Name="Email" Canvas.Left="105"  Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="30"/>
         <Label Content="Gender" Canvas.Left="257" Canvas.Top="110" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox Canvas.Left="340" Text="" Canvas.Top="114" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}"/>
+        <ComboBox x:Name="CmboxGender" Canvas.Left="340" Canvas.Top="114" Width="120"/>
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}" Click="donebtn_Click"/>
         <Button Content="Cancel" Canvas.Left="165" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
-        <DatePicker Canvas.Left="105" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="DatePicker" Canvas.Left="105" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
         <Label Content="D.O.B" Canvas.Left="39" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Label Content="Salary" Canvas.Left="259" Canvas.Top="148" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="152" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBox x:Name="Salarytxtbox" TextChanged="Salarytxtbox_TextChanged" Canvas.Left="340" TextWrapping="Wrap" Canvas.Top="152" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Label Content="Designation" Canvas.Left="257" Canvas.Top="69" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <ComboBox x:Name="DesignationCmBox" Canvas.Left="340" Canvas.Top="71" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>
 
 </Window>

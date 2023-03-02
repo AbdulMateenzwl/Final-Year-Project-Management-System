@@ -74,6 +74,7 @@
     <Compile Include="AssignProject.xaml.cs">
       <DependentUpon>AssignProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\Advisor_Helper.cs" />
     <Compile Include="HelperClasses\Configuration.cs" />
     <Compile Include="GroupCRUD.xaml.cs">
       <DependentUpon>GroupCRUD.xaml</DependentUpon>

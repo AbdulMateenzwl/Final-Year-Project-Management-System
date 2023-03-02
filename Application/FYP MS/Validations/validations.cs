@@ -59,6 +59,10 @@ namespace FYP_MS.Validations
         {
             return (ch >= '0' && ch <= '9');
         }
+        public static bool greaterThanZero(int num)
+        {
+            return num > 0;
+        }
 
     }
 }

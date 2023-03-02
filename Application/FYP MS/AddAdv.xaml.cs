@@ -33,7 +33,7 @@ namespace FYP_MS
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -46,6 +46,7 @@ namespace FYP_MS
                 {
                     Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, DatePicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
                     Advisor_Helper.addAdvisor(Person_Helper.getLastPersonId(),Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()),int.Parse(Salarytxtbox.Text));
+                    this.Close();
                 }
                 catch (Exception ex)
                 {

@@ -36,7 +36,7 @@ namespace FYP_MS
             Grid.Loaded += Grid_Loaded;
 
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddStuBtn(object sender, RoutedEventArgs e)
         {
             AddStu addStu = new AddStu();
             addStu.ShowDialog();
@@ -44,7 +44,7 @@ namespace FYP_MS
             loadData();
             Grid_Loaded();
         }
-        private void UpdateStudent_Click(object sender, RoutedEventArgs e)
+        private void UpdateStudentBtnClick(object sender, RoutedEventArgs e)
         {
             DataRowView row = Grid.SelectedItem as DataRowView;
             if(row==null)

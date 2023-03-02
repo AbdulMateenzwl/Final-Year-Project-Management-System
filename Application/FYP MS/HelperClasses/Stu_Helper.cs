@@ -28,7 +28,7 @@ namespace FYP_MS.HelperClasses
         public static DataTable GetStudentTable()
         {
             var con = Config.getConnection();
-            SqlCommand cmd = new SqlCommand("Select * from student,person", con);
+            SqlCommand cmd = new SqlCommand("Select * from student", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();

@@ -16,8 +16,8 @@
                 <Label Content="Search" Margin="10 10 5 10"></Label>
                 <TextBox x:Name="SearchBar" Width="200" Height="20" Margin="5" TextChanged="SearchBar_TextChanged"></TextBox>
                 <Button Content="Clear Text" Margin="5" Width="70" x:Name="clearTxt" Click="clearTxt_Click" Style="{StaticResource Btntype1}"></Button>
-                <Button Content="Add Advisor" Margin="5" Width="80" Style="{StaticResource Btntype1}" Click="Button_Click_3"></Button>
-                <Button Content="Update Advisor" Margin="5" Width="100" Style="{StaticResource Btntype1}" Click="Button_Click_4"></Button>
+                <Button Content="Add Advisor" Margin="5" Width="80" Style="{StaticResource Btntype1}" Click="AddAvisorBtn"></Button>
+                <Button Content="Update Advisor" Margin="5" Width="100" Style="{StaticResource Btntype1}" Click="UpdateAdvBtn"></Button>
             </WrapPanel>
             <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" 

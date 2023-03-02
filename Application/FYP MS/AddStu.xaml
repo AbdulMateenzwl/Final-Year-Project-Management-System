@@ -28,7 +28,7 @@
         <ComboBox x:Name="CmboxGender" Canvas.Left="340" Canvas.Top="114" Width="120"/>
         <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}" Click="donebtn_Click"/>
         <DatePicker  x:Name="Datepicker" Canvas.Left="105" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Cancel" Canvas.Left="165" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
+        <Button Content="Cancel" Canvas.Left="165" Canvas.Top="193" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Cancel_Click"/>
         <Label Content="D.O.B" Canvas.Left="39" Canvas.Top="149" HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </Canvas>
 

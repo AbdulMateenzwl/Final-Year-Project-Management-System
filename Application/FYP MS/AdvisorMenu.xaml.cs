@@ -31,7 +31,7 @@ namespace FYP_MS
         {
             try
             {
-                //Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
+                // changes as text changes in the textbox
                 Grid.ItemsSource = Advisor_Helper.Search(SearchBar.Text).DefaultView;
             }
             catch (Exception e)
@@ -44,33 +44,17 @@ namespace FYP_MS
             Grid.Columns[0].Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddAvisorBtn(object sender, RoutedEventArgs e)
         {
-            AddAdv addAdv = new AddAdv();
-            addAdv.ShowDialog();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AddAdv addAdv = new AddAdv();
-            addAdv.ShowDialog();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
+            // Add New Student
             AddAdv addStu = new AddAdv();
             addStu.ShowDialog();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void UpdateAdvBtn(object sender, RoutedEventArgs e)
         {
-            AddAdv addStu = new AddAdv();
-            addStu.ShowDialog();
+            // Edit Advisor Menu with values given from the selected column
+
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -80,15 +64,9 @@ namespace FYP_MS
             Grid_Loaded();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = "";
-
         }
 
         private void Grid_MouseDoubleClick(object sender, MouseButtonEventArgs e)

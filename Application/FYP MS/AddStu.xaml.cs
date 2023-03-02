@@ -32,7 +32,7 @@ namespace FYP_MS
             CmboxGender.SelectedIndex=0;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -45,6 +45,7 @@ namespace FYP_MS
                 {
                     Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
                     Stu_Helper.addStudent(Person_Helper.getLastPersonId(), RegNo.Text);
+                    this.Close();
                 }
                 catch(Exception ex)
                 {

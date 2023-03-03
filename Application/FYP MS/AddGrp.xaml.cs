@@ -1,6 +1,7 @@
 ﻿using FYP_MS.HelperClasses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,16 @@ namespace FYP_MS
     /// </summary>
     public partial class AddGrp : Window
     {
+        private List<Stu> stuList;
         public AddGrp()
         {
             InitializeComponent();
             loadData();
+            stuList = new List<Stu>();
             AllStudents.Loaded += Grid_Loaded;
+            this.DataContext = stuList;
+            SelectedStudents.ItemsSource = stuList;
+            SelectedStudents.Columns[0].Visibility = Visibility.Collapsed;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -57,5 +63,62 @@ namespace FYP_MS
         {
             SearchBar.Text = "";
         }
+        private void UpdateStudentBtnClick(object sender, RoutedEventArgs e)
+        {
+            DataRowView row = AllStudents.SelectedItem as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please Select a value from Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                try
+                {
+                    if ( Stu.Contains(stuList,int.Parse(row.Row[0].ToString())))
+                    {
+                        MessageBox.Show("This Student is already Selected.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        stuList.Add(new Stu(int.Parse(row.Row[0].ToString()), row.Row[1].ToString(), row.Row[2].ToString(), row.Row[3].ToString()));
+                        SelectedStudents.ItemsSource = null;
+                        SelectedStudents.ItemsSource = stuList;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
+        private void RemoveStu(object sender, RoutedEventArgs e)
+        {
+            Stu row = SelectedStudents.SelectedItem as Stu;
+            if (row == null)
+            {
+                MessageBox.Show("Please Select a value from Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                try
+                {
+                    if(!stuList.Contains(row))
+                    {
+                        MessageBox.Show("This Student does not exsists in the Group any more.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        stuList.Remove(row);
+                        SelectedStudents.ItemsSource = null;
+                        SelectedStudents.ItemsSource = stuList;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
     }
+
 }

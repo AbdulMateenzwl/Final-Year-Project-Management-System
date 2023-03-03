@@ -22,9 +22,9 @@
 
             <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
                       AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5"
                       CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" 
-                      MouseDoubleClick="UpdateStudentBtnClick" >
+                      MouseDoubleClick="UpdateStudentBtnClick">
             </DataGrid>
         </Grid>
     </DockPanel>

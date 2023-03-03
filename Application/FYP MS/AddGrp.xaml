@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
-      Title="Stu Edit" Height="350" Width="620" BorderBrush="Transparent" BorderThickness="10"  >
+      Title="Stu Edit" Height="350" Width="620" BorderBrush="Transparent" BorderThickness="0"  >
 
     <Window.Effect>
         <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
@@ -13,21 +13,32 @@
 
     <Canvas Background="{StaticResource Light Theme Text Color}">
 
-        <Label Content="Search" Canvas.Left="9" Canvas.Top="23" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Canvas.Left="59" Text="" Canvas.Top="27" Width="136" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
-        <Button Content="Clear Text" Width="70" x:Name="clearTxt" Click="clearTxt_Click" Style="{StaticResource Btntype2}" Canvas.Left="213" Canvas.Top="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="Search" Canvas.Left="6" Canvas.Top="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Canvas.Left="53" Text="" Canvas.Top="27" Width="125" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
+        <Button Content="Clear Text" Width="70" x:Name="clearTxt_Copy" Click="clearTxt_Click" Style="{StaticResource Btntype2}" Canvas.Left="183" Canvas.Top="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <Button  x:Name="donebtn" Content="Save" Canvas.Left="507" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}"/>
         <Button Content="Cancel" Canvas.Left="414" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
 
-        <DataGrid Name="AllStudents" Canvas.Left="9" Canvas.Top="93" Width="274" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
-                      AlternatingRowBackground="{StaticResource Light Theme Text Color}" Grid.Row="1"
-                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Height="225"/>
-        <Label Content="Select Student " Canvas.Left="66" Canvas.Top="67" HorizontalAlignment="Left" VerticalAlignment="Center" Width="88"/>
-        <Label Content="Selected Student " Canvas.Left="301" Canvas.Top="67" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <DataGrid x:Name="SelectedStudents" Canvas.Left="306" Canvas.Top="93" Width="280" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
-            AlternatingRowBackground="{StaticResource Light Theme Text Color}"
-            CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Height="225" />
+        <Label Content="Select Student " Canvas.Left="10" Canvas.Top="69" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88"/>
+        <Label Content="Selected Student " Canvas.Left="315" Canvas.Top="69" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
+        <DataGrid Name="AllStudents" Canvas.Left="5" Canvas.Top="100" Width="274" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}" Grid.Row="1"
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" HorizontalAlignment="Center" 
+                  VerticalAlignment="Top" Height="225" MouseDoubleClick="UpdateStudentBtnClick"/>
+
+
+        <DataGrid x:Name="SelectedStudents" ItemsSource="{Binding stuList}" Canvas.Left="315" Canvas.Top="100" Width="280" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+            AlternatingRowBackground="{StaticResource Light Theme Text Color}"
+            CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" 
+                  VerticalAlignment="Center" Height="225" MouseDoubleClick="RemoveStu">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="First Name" Binding="{Binding firstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Reg No" Binding="{Binding RegNo}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Canvas>
 </Window>

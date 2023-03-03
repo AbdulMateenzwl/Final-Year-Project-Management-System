@@ -19,23 +19,26 @@ namespace FYP_MS
     /// </summary>
     public partial class AddProject : Window
     {
-        private bool update;
-        public AddProject(bool flag=false)
+        public AddProject()
         {
             InitializeComponent();
-            update = flag;
-            if(update)
-            {
-                InitializeComponent();
-                donebtn.Content = "Update Project";
-                donebtn.Width += 20;
-                // Assign values to the boxes
-            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void donebtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HelperClasses.Project_Helper.addProject(TopicTxtBox.Text, DescriptionTextBox.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("There is an error while Adding Value to DataBase "+ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

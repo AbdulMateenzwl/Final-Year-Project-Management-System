@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FYP_MS.HelperClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,18 +24,39 @@ namespace FYP_MS
         public ProjectCRUD()
         {
             InitializeComponent();
+            Grid.Loaded += Grid_Loaded;
+            loadData();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddProject_Click(object sender, RoutedEventArgs e)
         {
             AddProject addpr = new AddProject();
             addpr.ShowDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void UpdateProject_Click(object sender, RoutedEventArgs e)
         {
-            AddProject addpr = new AddProject(true);
-            addpr.ShowDialog();
+            // Update Project with values
+
+        }
+
+        private void loadData()
+        {
+            Grid.ItemsSource = Project_Helper.Search(SearchBar.Text).DefaultView;
+        }
+        private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
+        {
+            Grid.Columns[0].Visibility = Visibility.Collapsed;
+        }
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBar.Text = "";
+        }
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // data changes as text changes
+            loadData();
+            Grid_Loaded();
         }
     }
 }

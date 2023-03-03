@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="HelperClasses\Lookup.cs" />
     <Compile Include="HelperClasses\Person_Helper.cs" />
+    <Compile Include="HelperClasses\Project_Helper.cs" />
     <Compile Include="HelperClasses\Stu_Helper.cs" />
     <Compile Include="ProjectCRUD.xaml.cs">
       <DependentUpon>ProjectCRUD.xaml</DependentUpon>

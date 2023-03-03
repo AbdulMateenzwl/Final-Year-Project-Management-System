@@ -75,17 +75,9 @@ namespace FYP_MS.HelperClasses
                     "join person as p on s.id = p.id " +
                     "join lookup as l on p.gender = l.id " +
                     "join lookup as lo on s.Designation=lo.Id " +
-                    "where FirstName like @FirstName or " +
-                    "LastName like @lastname or " +
-                    "Email like @email or " +
-                    "Designation like @Design or " +
-                    "contact like @cont_ ", con))
+                    "where FirstName + LastName + Email + lo.value + contact like @str_ ", con))
                 {
-                    cmd.Parameters.AddWithValue("FirstName", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("lastname", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("Email", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("cont_", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("Design", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }

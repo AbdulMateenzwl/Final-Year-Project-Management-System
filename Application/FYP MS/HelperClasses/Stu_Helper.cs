@@ -49,7 +49,6 @@ namespace FYP_MS.HelperClasses
             dt.Load(sdr);
             con.Close();
             return dt;
-            return new DataTable();
         }
         public static void updateStu(string regNo,int PID)
         {
@@ -74,23 +73,14 @@ namespace FYP_MS.HelperClasses
                     "from student as s " +
                     "join person as p on s.id = p.id " +
                     "join lookup as l on p.gender = l.id " +
-                    "where FirstName like @FirstName or " +
-                    "LastName like @lastname or " +
-                    "RegistrationNo like @RegNo or " +
-                    "Email like @email or " +
-                    "contact like @cont_ ", con))
+                    "where FirstName + LastName + RegistrationNo + Email + l.value + contact like @str ", con))
                 { 
-                    cmd.Parameters.AddWithValue("FirstName", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("lastname", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("RegNo", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("Email", string.Format("%{0}%", str));
-                    cmd.Parameters.AddWithValue("cont_", string.Format("%{0}%", str));
+                    cmd.Parameters.AddWithValue("str", string.Format("%{0}%", str));
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }
                 return dt;
             }
-            con.Close();
         }
     }
 }

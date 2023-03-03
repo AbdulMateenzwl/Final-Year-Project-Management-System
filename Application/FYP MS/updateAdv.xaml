@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
-      Title="Stu Edit" Height="250" Width="500" BorderBrush="Transparent" BorderThickness="0" >
+      Title="Stu Edit" Height="260" Width="500" BorderBrush="Transparent" BorderThickness="10" >
 
 
     <Window.Effect>

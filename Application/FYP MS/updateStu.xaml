@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d"
        d:DesignHeight="250" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
-      Title="Stu Edit" Height="250" Width="500" BorderBrush="Transparent" BorderThickness="10" >
+      Title="Stu Edit" Height="260" Width="500" BorderBrush="Transparent" BorderThickness="10" >
 
     <Window.Effect>
         <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />

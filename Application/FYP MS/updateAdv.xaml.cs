@@ -54,12 +54,12 @@ namespace FYP_MS
                     // Update the values of person and advisor in db
                     Person_Helper.updatePerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, DatePicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()), PId);
                     Advisor_Helper.updateAdvisor(Lookup.getIndexFromValue(DesignationCmBox.SelectedValue.ToString()), int.Parse(Salarytxtbox.Text), PId);
-                    this.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("There is an error while updating the record " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                this.Close();
             }
         }
 

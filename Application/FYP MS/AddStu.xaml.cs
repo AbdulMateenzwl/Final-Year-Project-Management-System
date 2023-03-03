@@ -45,12 +45,12 @@ namespace FYP_MS
                 {
                     Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
                     Stu_Helper.addStudent(Person_Helper.getLastPersonId(), RegNo.Text);
-                    this.Close();
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show("There is an error while updating the record "+ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                this.Close();
             }
         }
         private bool validate()

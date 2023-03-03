@@ -51,12 +51,12 @@ namespace FYP_MS
                     // update person and student in db
                     Person_Helper.updatePerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()),Pid);
                     Stu_Helper.updateStu(RegNo.Text, Pid);
-                    this.Close();
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show("There is an error while updating the record "+ex, "Alert",MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                this.Close();
             }
         }
         private bool validate()

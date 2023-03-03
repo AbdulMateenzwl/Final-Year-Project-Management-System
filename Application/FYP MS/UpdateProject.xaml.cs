@@ -16,15 +16,18 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for AddProject.xaml
+    /// Interaction logic for UpdateProject.xaml
     /// </summary>
-    public partial class AddProject : Window
+    public partial class UpdateProject : Window
     {
-        public AddProject()
+        private int Pid;
+        public UpdateProject(int ProjectId, string title, string discription)
         {
             InitializeComponent();
+            Pid= ProjectId;
+            TopicTxtBox.Text = title;
+            DescriptionTextBox.Text = discription;
         }
-
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -36,12 +39,12 @@ namespace FYP_MS
             {
                 try
                 {
-                    MessageBox.Show("testing");
-                    HelperClasses.Project_Helper.addProject(TopicTxtBox.Text, DescriptionTextBox.Text);
+                    // Update the Project with values
+                    HelperClasses.Project_Helper.updateProject(Pid, TopicTxtBox.Text, DescriptionTextBox.Text);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("There is an error while Adding Value to DataBase  111 " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("There is an error while Adding Value to DataBase " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 this.Close();
             }
@@ -53,7 +56,7 @@ namespace FYP_MS
                 MessageBox.Show("Title should atleast be 3 characters.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if(!validations.description(DescriptionTextBox.Text))
+            if (!validations.description(DescriptionTextBox.Text))
             {
                 MessageBox.Show("Description Should be more than 50 characters.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;

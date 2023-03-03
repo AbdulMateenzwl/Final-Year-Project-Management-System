@@ -20,7 +20,11 @@
                 <Button Content="Update Student" Margin="5" Click="UpdateStudentBtnClick" Width="100" Style="{StaticResource Btntype1}"></Button>
             </WrapPanel>
 
-            <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="{StaticResource Light Theme Text Color}"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="UpdateStudentBtnClick" >
+            <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" 
+                      MouseDoubleClick="UpdateStudentBtnClick" >
             </DataGrid>
         </Grid>
     </DockPanel>

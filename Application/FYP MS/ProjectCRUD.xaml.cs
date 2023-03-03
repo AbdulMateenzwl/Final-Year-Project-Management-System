@@ -1,6 +1,7 @@
 ﻿using FYP_MS.HelperClasses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,12 +33,33 @@ namespace FYP_MS
         {
             AddProject addpr = new AddProject();
             addpr.ShowDialog();
+            loadData();
+            Grid_Loaded();
         }
 
         private void UpdateProject_Click(object sender, RoutedEventArgs e)
         {
             // Update Project with values
-
+            DataRowView row = Grid.SelectedItem as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please Select a value from Table", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                try
+                {
+                    UpdateProject up = new UpdateProject(int.Parse(row.Row[0].ToString()), row.Row[1].ToString(), row.Row[2].ToString());
+                    up.ShowDialog();
+                    loadData();
+                    Grid_Loaded();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            
         }
 
         private void loadData()
@@ -47,6 +69,9 @@ namespace FYP_MS
         private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
         {
             Grid.Columns[0].Visibility = Visibility.Collapsed;
+            Grid.Columns[1].Width = 90;
+            Grid.RowHeight = 50;
+
         }
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {

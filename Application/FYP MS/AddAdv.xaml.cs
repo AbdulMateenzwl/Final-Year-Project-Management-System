@@ -46,12 +46,12 @@ namespace FYP_MS
                 {
                     Person_Helper.addPerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, DatePicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()));
                     Advisor_Helper.addAdvisor(Person_Helper.getLastPersonId(),Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()),int.Parse(Salarytxtbox.Text));
-                    this.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("There is an error while updating the record " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                this.Close();
             }
         }
 

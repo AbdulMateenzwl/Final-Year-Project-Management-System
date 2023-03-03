@@ -68,6 +68,10 @@ namespace FYP_MS.Validations
         {
             return new Regex("[^0-9]+").IsMatch(e.Text);
         }
+        public static bool description(string text)
+        {
+            return text.Length > 50;
+        }
 
     }
 }

@@ -53,10 +53,17 @@ namespace FYP_MS
             }
             else
             {
-                updateStu ustu = new updateStu(row.Row.ItemArray[1].ToString(), row.Row.ItemArray[2].ToString(), row.Row.ItemArray[3].ToString(), row.Row.ItemArray[4].ToString(), row.Row.ItemArray[5].ToString(), (DateTime)row.Row.ItemArray[6],(row.Row.ItemArray[7].ToString()), (int)row.Row.ItemArray[0]);
-                ustu.ShowDialog();
-                loadData();
-                Grid_Loaded();
+                try
+                {
+                    updateStu ustu = new updateStu(row.Row.ItemArray[1].ToString(), row.Row.ItemArray[2].ToString(), row.Row.ItemArray[3].ToString(), row.Row.ItemArray[4].ToString(), row.Row.ItemArray[5].ToString(), (DateTime)row.Row.ItemArray[6],(row.Row.ItemArray[7].ToString()), (int)row.Row.ItemArray[0]);
+                    ustu.ShowDialog();
+                    loadData();
+                    Grid_Loaded();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error Updating data into Database "+ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
         }
         private void loadData()
@@ -67,9 +74,9 @@ namespace FYP_MS
                 Grid.ItemsSource = Stu_Helper.Search(SearchBar.Text).DefaultView;
                
             }
-            catch(Exception e) 
+            catch(Exception ex) 
             {
-                MessageBox.Show("Error loading data from Database "+e, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Error loading data from Database "+ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

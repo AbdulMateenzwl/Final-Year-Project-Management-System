@@ -13,7 +13,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <WrapPanel>
-                <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
+                <Label Margin="10 10 0 10" Content="Search"></Label>
                 <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Width="200" Height="20" Margin="5"></TextBox>
                 <Button Content="Clear Text" Click="ClearBtn_Click" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Add Project" Name="AddProject"  Margin="5" Click="AddProject_Click" Width="80" Style="{StaticResource Btntype1}"></Button>
@@ -21,7 +21,8 @@
             </WrapPanel>
             <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" 
-                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="True" IsReadOnly="True" >
+                      CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" MouseDoubleClick="UpdateProject_Click">
+
             </DataGrid>
         </Grid>
     </DockPanel>

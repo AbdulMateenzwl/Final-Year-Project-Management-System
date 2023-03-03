@@ -2,8 +2,11 @@
 using FYP_MS.Validations;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,26 +20,26 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for updateStu.xaml
+    /// Interaction logic for updateAdv.xaml
     /// </summary>
-    public partial class updateStu : Window
+    public partial class updateAdv : Window
     {
-        private int Pid;
-        public updateStu(string FirstName, string LastName,string regno, string Contact, string email, DateTime dateTime, string gender, int PersonID)
+        private int PId;
+        public updateAdv(string FirstName, string LastName,string design ,int salary, string Contact, string email, DateTime dateTime, string gender, int PersonID)
         {
             InitializeComponent();
-            // Assign values to the input fields
+            CmboxGender.ItemsSource = Lookup.getGenders();
+            DesignationCmBox.ItemsSource = Lookup.getDesignations();
             this.FirstName.Text = FirstName;
             this.LastName.Text = LastName;
-            this.RegNo.Text = regno;
+            this.Salarytxtbox.Text = salary.ToString();
             this.ContactNo.Text = Contact;
             this.Email.Text = email;
-            Datepicker.SelectedDate=dateTime;
-            CmboxGender.ItemsSource = Lookup.getGenders();
+            DatePicker.SelectedDate = dateTime;
             CmboxGender.SelectedValue = gender;
-            Pid = PersonID;
+            DesignationCmBox.SelectedValue = design;
+            PId = PersonID;
         }
-
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -48,17 +51,18 @@ namespace FYP_MS
             {
                 try
                 {
-                    // update person and student in db
-                    Person_Helper.updatePerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, Datepicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()),Pid);
-                    Stu_Helper.updateStu(RegNo.Text, Pid);
+                    // Update the values of person and advisor in db
+                    Person_Helper.updatePerson(FirstName.Text, LastName.Text, ContactNo.Text, Email.Text, DatePicker.SelectedDate.Value, Lookup.getIndexFromValue(CmboxGender.SelectedValue.ToString()), PId);
+                    Advisor_Helper.updateAdvisor(Lookup.getIndexFromValue(DesignationCmBox.SelectedValue.ToString()), int.Parse(Salarytxtbox.Text), PId);
                     this.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("There is an error while updating the record "+ex, "Alert",MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("There is an error while updating the record " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
+
         private bool validate()
         {
             if (!validations.name(FirstName.Text) || !validations.name(LastName.Text))
@@ -76,12 +80,22 @@ namespace FYP_MS
                 MessageBox.Show("InValid Email Address", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
-            if (!validations.age16plus(Datepicker.SelectedDate.Value))
+            if (!validations.age16plus(DatePicker.SelectedDate.Value))
             {
                 MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
+            if (!validations.greaterThanZero(int.Parse(Salarytxtbox.Text)))
+            {
+                MessageBox.Show("Salary Must be a postive Number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
             return true;
+        }
+
+        private void Salarytxtbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = validations.NumberInput(e);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 
 namespace FYP_MS.Validations
 {
@@ -62,6 +63,10 @@ namespace FYP_MS.Validations
         public static bool greaterThanZero(int num)
         {
             return num > 0;
+        }
+        public static bool NumberInput(TextCompositionEventArgs e)
+        {
+            return new Regex("[^0-9]+").IsMatch(e.Text);
         }
 
     }

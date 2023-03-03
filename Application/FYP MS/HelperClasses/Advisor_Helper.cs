@@ -52,7 +52,7 @@ namespace FYP_MS.HelperClasses
         }
         public static void updateAdvisor(int Design,int Salray , int PID)
         {
-            string Text = "UPDATE Student SET Designation = @des_ ,salary = @sal_  Where id = @id_";
+            string Text = "UPDATE advisor SET Designation = @des_ ,salary = @sal_  Where id = @id_";
             var con = Config.getConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand(Text, con);

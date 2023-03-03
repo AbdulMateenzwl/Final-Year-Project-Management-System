@@ -88,6 +88,9 @@
     <Compile Include="StudentCRUD.xaml.cs">
       <DependentUpon>StudentCRUD.xaml</DependentUpon>
     </Compile>
+    <Compile Include="updateAdv.xaml.cs">
+      <DependentUpon>updateAdv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="updateStu.xaml.cs">
       <DependentUpon>updateStu.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudentCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="updateAdv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

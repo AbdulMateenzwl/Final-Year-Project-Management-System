@@ -85,15 +85,9 @@ namespace FYP_MS
             return true;
         }
 
-        private void Salarytxtbox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Salarytxtbox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if(Salarytxtbox.Text.Length>0 )
-            {
-                if (!(Salarytxtbox.Text[Salarytxtbox.Text.Length-1] >='0' && Salarytxtbox.Text[Salarytxtbox.Text.Length-1] <='9'))
-                {
-                    Salarytxtbox.Text = Salarytxtbox.Text.Substring(0,Salarytxtbox.Text.Length-1);
-                }
-            }
+            e.Handled = validations.NumberInput(e);
         }
     }
 }

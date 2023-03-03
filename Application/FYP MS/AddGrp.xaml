@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
-      Title="Stu Edit" Height="350" Width="600" BorderBrush="Transparent"  >
+      Title="Stu Edit" Height="350" Width="620" BorderBrush="Transparent" BorderThickness="10"  >
 
     <Window.Effect>
         <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
@@ -13,15 +13,21 @@
 
     <Canvas Background="{StaticResource Light Theme Text Color}">
 
-        <Label Content="Search" Canvas.Left="15" Canvas.Top="23" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBox Canvas.Left="65" Text="" Canvas.Top="27" Width="136" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
-        <Button  x:Name="donebtn" Content="Save" Canvas.Left="513" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}"/>
-        <Button Content="Cancel" Canvas.Left="420" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
-        <StackPanel Orientation="Horizontal"  Height="255" Canvas.Left="15" Canvas.Top="85" HorizontalAlignment="Center" Width="572" VerticalAlignment="Top">
-            <ListView Width="265" Margin="10"></ListView>
-            <ListView Width="265" Margin="10"></ListView>
-        </StackPanel>
-        <Label Content="Select Student " Canvas.Left="22" Canvas.Top="67" HorizontalAlignment="Left" VerticalAlignment="Center" Width="87"/>
-        <Label Content="Selected Student " Canvas.Left="307" Canvas.Top="67" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="Search" Canvas.Left="9" Canvas.Top="23" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Canvas.Left="59" Text="" Canvas.Top="27" Width="136" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
+        <Button Content="Clear Text" Width="70" x:Name="clearTxt" Click="clearTxt_Click" Style="{StaticResource Btntype2}" Canvas.Left="213" Canvas.Top="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="507" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}"/>
+        <Button Content="Cancel" Canvas.Left="414" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
+
+        <DataGrid Name="AllStudents" Canvas.Left="9" Canvas.Top="93" Width="274" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}" Grid.Row="1"
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Height="225"/>
+        <Label Content="Select Student " Canvas.Left="66" Canvas.Top="67" HorizontalAlignment="Left" VerticalAlignment="Center" Width="88"/>
+        <Label Content="Selected Student " Canvas.Left="301" Canvas.Top="67" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <DataGrid x:Name="SelectedStudents" Canvas.Left="306" Canvas.Top="93" Width="280" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+            AlternatingRowBackground="{StaticResource Light Theme Text Color}"
+            CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Height="225" />
+
     </Canvas>
 </Window>

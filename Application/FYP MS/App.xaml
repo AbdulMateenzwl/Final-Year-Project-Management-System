@@ -82,6 +82,24 @@
             </Setter>
         </Style>
         
+        <!--Normal Button 2-->
+        <Style TargetType="Button" x:Key="Btntype2">
+            <Setter Property="Foreground" Value="{StaticResource Basic Text Color}"></Setter>
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Height" Value="25" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{StaticResource Theme Text Color}" BorderBrush="#ccc" BorderThickness="0" >
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                    
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <!--TEXT box-->
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="Transparent"/>

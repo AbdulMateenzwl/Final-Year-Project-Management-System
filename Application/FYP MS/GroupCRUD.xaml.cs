@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FYP_MS.HelperClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,39 @@ namespace FYP_MS
         public GroupCRUD()
         {
             InitializeComponent();
+            loadData();
+            //Grid.Loaded += Grid_Loaded;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddGroup_Click(object sender, RoutedEventArgs e)
         {
             AddGrp addGrp = new AddGrp();
             addGrp.ShowDialog();
+        }
+        private void loadData()
+        {
+            /*try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading data from Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }*/
+        }
+        private void clearTxt_Click(object sender, RoutedEventArgs e)
+        {
+            SearchBar.Text = "";
+        }
+        private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
+        {
+            Grid.Columns[0].Visibility = Visibility.Collapsed;
+        }
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // data changes as text changes
+            loadData();
+            Grid_Loaded();
         }
 
     }

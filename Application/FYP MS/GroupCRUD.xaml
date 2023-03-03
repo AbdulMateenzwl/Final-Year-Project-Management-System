@@ -13,14 +13,16 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <WrapPanel>
-                <Label Margin="10 10 0 10" Content="Enter Student Name"></Label>
-                <TextBox Width="200" Height="20" Margin="5"></TextBox>
-                <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
-                <Button Content="Create Group" Margin="5" Click="Button_Click" Width="90" Style="{StaticResource Btntype1}"></Button>
+                <Label Margin="10 10 0 10" Content="Search"></Label>
+                <TextBox Name="SearchBar" Width="200" TextChanged="SearchBar_TextChanged" Height="20" Margin="5"></TextBox>
+                <Button Content="Clear Text" Margin="5" Click="clearTxt_Click" Width="70" Style="{StaticResource Btntype1}"></Button>
+                <Button Content="Create Group" Margin="5" Click="AddGroup_Click" Width="90" Style="{StaticResource Btntype1}"></Button>
                 <Button Content="Update Group" Margin="5"  Width="100" Style="{StaticResource Btntype1}"></Button>
             </WrapPanel>
-            <DataGrid Grid.Row="1" x:Name="Grid" Margin="5">
-
+            <DataGrid ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" x:Name="Grid" Margin="5" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" >
             </DataGrid>
         </Grid>
     </DockPanel>

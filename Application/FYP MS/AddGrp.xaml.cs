@@ -94,20 +94,28 @@ namespace FYP_MS
         }
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            List<Stu> d = SelectedStudents.ItemsSource as List<Stu>;
-            if (d.Count > 0)
+            try
             {
-                Group_Helper.addGroup(Datepicker.SelectedDate.Value);
-                int Gid = Group_Helper.getLastGroupId();
-                for (int i = 0; i < d.Count; i++)
+                List<Stu> d = SelectedStudents.ItemsSource as List<Stu>;
+                if (d.Count > 0)
                 {
-                    Group_Helper.addStuGroup(Gid, d[0].id, true, DateTime.Now);
+                    Group_Helper.addGroup(Datepicker.SelectedDate.Value);
+                    int Gid = Group_Helper.getLastGroupId();
+                    for (int i = 0; i < d.Count; i++)
+                    {
+                        Group_Helper.addStuGroup(Gid, d[i].id, true, DateTime.Now);
+                    }
+                    this.Close();
                 }
-                this.Close();
+                else
+                {
+                    MessageBox.Show("Select Atleast One Student.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Select Atleast One Student.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("There is an Error while Adding Students in Group. " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
         private void RemoveStu(object sender, RoutedEventArgs e)

@@ -65,5 +65,21 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
+        public static DataTable GetProjectNotAssigned(string str)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select id,title,Description from Project " +
+                    "where Project.Id not in ( select s.ProjectId from GroupProject as s ) and Title + Description like @str_ ", con))
+                {
+                    cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
     }
 }

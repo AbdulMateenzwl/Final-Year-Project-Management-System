@@ -9,9 +9,10 @@
     <DockPanel Background="AliceBlue" LastChildFill="True" Height="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}">
         <DockPanel DockPanel.Dock="Top">
             <Label Margin="10 10 0 10" Content="Enter Project Name"></Label>
-            <TextBox Width="150" Height="20" Margin="5"></TextBox>
-            <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}"></Button>
-            <Button Content="Assign Project" Margin="0,5,0,5" Width="80" Style="{StaticResource Btntype1}" DockPanel.Dock="Right"/>
+            <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Width="150" Height="20" Margin="5"></TextBox>
+            <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}" Click="Button_Click"></Button>
+            <Button x:Name="AssignBtn" Content="Assign Project" Margin="0 0 10 0 " Width="95" Style="{StaticResource Btntype1}" DockPanel.Dock="Right" Click="AssignBtn_Click"/>
+            <Button x:Name="UpdateProjectBtn" Click="UpdateProjectBtn_Click" Content="Update Project" Width="94" Style="{StaticResource Btntype1}" DockPanel.Dock="Right" />
         </DockPanel>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
@@ -24,17 +25,22 @@
         <Grid DockPanel.Dock="Top" >
             <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition MaxHeight="200"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="Grid"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" DockPanel.Dock="Top"/>
+                <DataGrid x:Name="GroupGrid"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" DockPanel.Dock="Top" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" />
 
-                <DataGrid x:Name="Grid1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,20,0" DockPanel.Dock="Top" Grid.Column="1"/>
+                <DataGrid x:Name="ProjectGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,20,0" DockPanel.Dock="Top" Grid.Column="1" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True"/>
 
             </Grid>
         </Grid>
@@ -58,11 +64,14 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
-                    <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Label Margin="10,10,83,10" Content="Main Advisor" Grid.ColumnSpan="2"></Label>
+                    <TextBox x:Name="searchMainAdvbox" TextChanged="searchMainAdvbox_TextChanged" Grid.Column="1"  Height="20" Margin="3,13,75,13" Grid.ColumnSpan="2"></TextBox>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="17,11,0,10" Width="70" Style="{StaticResource Btntype1}" Click="Button_Click_1"></Button>
                 </Grid>
-                <DataGrid x:Name="Grid2"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,0,0,0" Grid.Row="1" />
+                <DataGrid x:Name="MainAdvGrid"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="5,0,0,0" Grid.Row="1" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True"/>
             </Grid>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -75,11 +84,14 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
-                    <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Label Margin="2,10,8,10" Content="Co Advisor"></Label>
+                    <TextBox x:Name="searchCoAdvbox" TextChanged="searchCoAdvbox_TextChanged"  Height="20" Margin="74,13,83,13" Grid.ColumnSpan="3"/>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}" Click="Button_Click_2"></Button>
                 </Grid>
-                <ListView x:Name="Grid3"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" />
+                <DataGrid x:Name="coAdvGrid"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" />
             </Grid>
             <Grid Grid.Column="4">
                 <Grid.RowDefinitions>
@@ -92,13 +104,15 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Margin="10 10 0 10" Content="Advisor 1"></Label>
-                    <TextBox Grid.Column="1"  Height="20" Margin="0,5,0,5"></TextBox>
-                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}"></Button>
+                    <Label Margin="-5,10,83,10" Content="Industry Advisor" Grid.ColumnSpan="2"></Label>
+                    <TextBox x:Name="IndustryAdvSearchbox" TextChanged="IndustryAdvSearchbox_TextChanged" Grid.Column="1"  Height="20" Margin="5,13,81,13" Grid.ColumnSpan="2"></TextBox>
+                    <Button Grid.Column="2" Content="Clear Text" Margin="5,0,0,0" Width="70" Style="{StaticResource Btntype1}" Click="Button_Click_3"></Button>
                 </Grid>
-                <ListView x:Name="Grid4"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" Margin="0,0,10,0" />
+                <DataGrid x:Name="IndAdvGrid"  d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.Row="1" Margin="0,0,10,0" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"    
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" />
             </Grid>
-            
+
         </Grid>
     </DockPanel>
 </UserControl>

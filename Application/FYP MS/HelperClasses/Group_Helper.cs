@@ -25,6 +25,20 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
+        public static DataTable getGroupsNotAssignedProject()
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Groups"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select id as [Group No],Created_On as [Creation Date] from [dbo].[group] where id not in (select GP.Groupid from GroupProject as GP)", con))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
         public static DataTable SearchGroup(int num)
         {
             var con = Config.getConnection();

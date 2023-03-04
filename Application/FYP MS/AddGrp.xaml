@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FYP_MS"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
-      Title="Stu Edit" Height="350" Width="620" BorderBrush="Transparent" BorderThickness="0"  >
+      Title="Stu Edit" Height="350" Width="620" BorderBrush="Transparent" BorderThickness="10"  >
 
     <Window.Effect>
         <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
     </Window.Effect>
 
     <Canvas Background="{StaticResource Light Theme Text Color}">
-
         <Label Content="Search" Canvas.Left="6" Canvas.Top="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Canvas.Left="53" Text="" Canvas.Top="27" Width="125" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
-        <Button Content="Clear Text" Width="70" x:Name="clearTxt_Copy" Click="clearTxt_Click" Style="{StaticResource Btntype2}" Canvas.Left="183" Canvas.Top="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Clear Text" Width="70" x:Name="clearTxt" Click="clearTxt_Click" Style="{StaticResource Btntype2}" Canvas.Left="183" Canvas.Top="27" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <Button  x:Name="donebtn" Content="Save" Canvas.Left="507" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}"/>
+        <Button Content="&gt;" Width="28" x:Name="AddStuGroup" Click="UpdateStudentBtnClick" Style="{StaticResource Btntype2}" Canvas.Left="283" Canvas.Top="148" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Content="&lt;" Canvas.Left="284" Canvas.Top="190" RenderTransformOrigin="0.681,-1.002" Height="27" Width="27" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="RemoveStu"/>
+
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="507" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource donebtn}" Click="SaveBtn_Click"/>
         <Button Content="Cancel" Canvas.Left="414" Canvas.Top="18" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource cancelbtn}" Click="Button_Click"/>
 
+        <DatePicker x:Name="Datepicker" Canvas.Top="69" Canvas.Bottom="284" Canvas.Left="142"></DatePicker>
         <Label Content="Select Student " Canvas.Left="10" Canvas.Top="69" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88"/>
         <Label Content="Selected Student " Canvas.Left="315" Canvas.Top="69" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 

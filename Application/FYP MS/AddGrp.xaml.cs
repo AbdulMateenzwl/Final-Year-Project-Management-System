@@ -31,6 +31,7 @@ namespace FYP_MS
             this.DataContext = stuList;
             SelectedStudents.ItemsSource = stuList;
             SelectedStudents.Columns[0].Visibility = Visibility.Collapsed;
+            Datepicker.SelectedDate= DateTime.Now;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +51,7 @@ namespace FYP_MS
         }
         private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
         {
-            AllStudents.Columns[0].Visibility = Visibility.Collapsed;
+            //AllStudents.Columns[0].Visibility = Visibility.Collapsed;
         }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -90,6 +91,18 @@ namespace FYP_MS
                     MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+        }
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Group_Helper.addGroup(Datepicker.SelectedDate.Value);
+            int Gid = Group_Helper.getLastGroupId();
+            MessageBox.Show(Gid.ToString());
+            List<Stu> d = SelectedStudents.ItemsSource as List<Stu>;
+            for (int i = 0; i < d.Count; i++)
+            {
+                Group_Helper.addStuGroup(Gid, d[0].id, true, DateTime.Now);
+            }
+            this.Close();
         }
         private void RemoveStu(object sender, RoutedEventArgs e)
         {

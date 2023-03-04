@@ -35,22 +35,22 @@ namespace FYP_MS
         }
         private void loadData()
         {
-            /*try
+            try
             {
-                
+                Grid.ItemsSource = Group_Helper.getGroupDetails().DefaultView;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading data from Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }*/
-        }
+            }
+        }   
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = "";
         }
         private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
         {
-            Grid.Columns[0].Visibility = Visibility.Collapsed;
+            //Grid.Columns[0].Visibility = Visibility.Collapsed;
         }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {

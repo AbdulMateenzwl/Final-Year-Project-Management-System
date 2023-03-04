@@ -1,6 +1,7 @@
 ﻿using FYP_MS.HelperClasses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,13 +26,15 @@ namespace FYP_MS
         {
             InitializeComponent();
             loadData();
-            //Grid.Loaded += Grid_Loaded;
+            Grid.Loaded += Grid_Loaded;
         }
 
         private void AddGroup_Click(object sender, RoutedEventArgs e)
         {
             AddGrp addGrp = new AddGrp();
             addGrp.ShowDialog();
+            loadData();
+            
         }
         private void loadData()
         {
@@ -55,9 +58,35 @@ namespace FYP_MS
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             // data changes as text changes
-            loadData();
-            Grid_Loaded();
+            if (SearchBar.Text == "")
+            {
+                loadData();
+            }
+            else if (int.TryParse(SearchBar.Text.ToString(),out int indd))
+            {
+                Grid.ItemsSource = Group_Helper.SearchGroup(int.Parse(SearchBar.Text.ToString())).DefaultView;
+            }
         }
 
+        private void Grid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView row = Grid.SelectedItem as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please Select a value from Table", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                try
+                {
+                    //  Get the selected group table from database
+                    StudentsGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Getting Data from Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
     }
 }

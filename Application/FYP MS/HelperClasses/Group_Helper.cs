@@ -17,9 +17,24 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Groups"))
             {
-                using (SqlCommand cmd = new SqlCommand("Select *" +
-                    "from [dbo].[Group] " , con))
+                using (SqlCommand cmd = new SqlCommand("Select id as [Group No],Created_On as [Creation Date] from [dbo].[group]", con))
                 {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        public static DataTable SearchGroup(int num)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Groups"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select id as [Group No],Created_On as [Creation Date] from [dbo].[group] where id = @num", con))
+                {
+                    cmd.Parameters.AddWithValue("num", num);
+
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }
@@ -69,6 +84,26 @@ namespace FYP_MS.HelperClasses
             DataTable dt = new DataTable();
             da.Fill(dt);
             con.Close();
+        }
+        public static DataTable GetStuFromGid(int Gid)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select p.id,p.FirstName,p.LastName,s.RegistrationNo,p.Contact,p.Email " +
+                    "from student as s " +
+                    "join person as p on s.id = p.id " +
+                    "join lookup as l on p.gender = l.id " +
+                    "join GroupStudent as GS on GS.StudentId = P.Id " +
+                    "where GS.GroupId = @id ", con))
+                {
+                    cmd.Parameters.AddWithValue("id",Gid);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
         }
     }
 }

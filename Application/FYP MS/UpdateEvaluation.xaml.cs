@@ -2,6 +2,7 @@
 using FYP_MS.Validations;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +18,19 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for AddEvaluation.xaml
+    /// Interaction logic for UpdateEvaluation.xaml
     /// </summary>
-    public partial class AddEvaluation : Window
+    public partial class UpdateEvaluation : Window
     {
-        public AddEvaluation()
+        private int EvaluationId;
+        public UpdateEvaluation(string name,int totalMarks,int WeightAge,int evlId)
         {
             InitializeComponent();
+            EvlName.Text = name;
+            TotalMarks.Text = totalMarks.ToString();
+            WeightAgetxtbox.Text = WeightAge.ToString();
+            EvaluationId = evlId;   
         }
-
         private void TotalMarks_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = validations.NumberInput(e);
@@ -47,9 +52,9 @@ namespace FYP_MS
             {
                 try
                 {
-                    Evaluation_Helper.insertEvaluation(EvlName.Text.ToString(), int.Parse(TotalMarks.Text.ToString()), int.Parse(WeightAgetxtbox.Text.ToString()));
+                    Evaluation_Helper.UpdateEvaluation(EvlName.Text.ToString(), int.Parse(TotalMarks.Text.ToString()), int.Parse(WeightAgetxtbox.Text.ToString()),EvaluationId);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("There is an error while updating the record " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -68,7 +73,7 @@ namespace FYP_MS
                 MessageBox.Show("Marks Must be a postive Number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
-            if (!validations.percent(int.Parse(WeightAgetxtbox.Text.ToString())))
+            if(!validations.percent(int.Parse(WeightAgetxtbox.Text.ToString())))
             {
                 MessageBox.Show("WeightAge Must Between 0 - 100 (Percent).", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;

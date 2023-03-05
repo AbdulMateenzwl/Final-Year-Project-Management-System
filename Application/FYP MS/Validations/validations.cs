@@ -72,6 +72,10 @@ namespace FYP_MS.Validations
         {
             return text.Length > 50;
         }
+        public static bool percent(int num)
+        {
+            return (num >= 0 && num <= 100);
+        }
 
     }
 }

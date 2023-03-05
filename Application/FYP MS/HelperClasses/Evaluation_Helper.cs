@@ -23,7 +23,7 @@ namespace FYP_MS.HelperClasses
             con.Close();
             return dt;
         }
-        public static void insertGroup(string name,int totalM,int tWeightage)
+        public static void insertEvaluation(string name,int totalM,int tWeightage)
         {
             var con = Config.getConnection();
             con.Open();
@@ -36,5 +36,21 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
+        
+        public static void UpdateEvaluation(string name,int totalM,int tWeightage,int id)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update Evaluation set Name= @name , TotalMarks = @tot ,TotalWeightage = @weight where id = @id ", con);
+            cmd.Parameters.AddWithValue("name", name);
+            cmd.Parameters.AddWithValue("tot", totalM);
+            cmd.Parameters.AddWithValue("weight", tWeightage);
+            cmd.Parameters.AddWithValue("id", id);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+        }
+
     }
 }

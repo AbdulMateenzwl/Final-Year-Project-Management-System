@@ -70,9 +70,7 @@ namespace FYP_MS
         {
             try
             {
-                //Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
                 Grid.ItemsSource = Stu_Helper.Search(SearchBar.Text).DefaultView;
-               
             }
             catch(Exception ex) 
             {

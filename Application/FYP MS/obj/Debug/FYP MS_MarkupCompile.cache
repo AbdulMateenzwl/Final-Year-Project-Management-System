@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\App.xaml
-142051543750
+16-182353453
 
-271622633180
+30-841660210
 14-207034072
-AddAdv.xaml;AddAssignProject.xaml;AddGrp.xaml;AddProject.xaml;AddStu.xaml;AdvisorMenu.xaml;AssignProjectCRUD.xaml;GroupCRUD.xaml;MainWindow.xaml;ProjectCRUD.xaml;StudentCRUD.xaml;updateAdv.xaml;UpdateProject.xaml;updateStu.xaml;
+AddAdv.xaml;AddAssignProject.xaml;AddEvaluation.xaml;AddGrp.xaml;AddProject.xaml;AddStu.xaml;AdvisorMenu.xaml;AssignProjectCRUD.xaml;EvaluationCRUD.xaml;GroupCRUD.xaml;MainWindow.xaml;ProjectCRUD.xaml;StudentCRUD.xaml;updateAdv.xaml;UpdateProject.xaml;updateStu.xaml;
 
 False
 

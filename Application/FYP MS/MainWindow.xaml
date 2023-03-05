@@ -16,8 +16,8 @@
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="StuBtn" MouseLeftButtonUp="StuBtn_MouseLeftButtonUp" >Manage Students</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="AdvBtn" MouseLeftButtonUp="AdvBtn_MouseLeftButtonUp">Manage Advisors</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="Projectbtn" MouseLeftButtonUp="Projectbtn_MouseLeftButtonUp">Manage Projects</Label>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="GroupManagebtn" MouseLeftButtonUp="GroupManagebtn_MouseLeftButtonUp">Group Management</Label>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="AssignProjectbtn" MouseLeftButtonUp="AssignProjectbtn_MouseLeftButtonUp" Content="Assign Project/ Advisor"/>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="GroupManagebtn" MouseLeftButtonUp="GroupManagebtn_MouseLeftButtonUp">Manage Group</Label>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="AssignProjectbtn" MouseLeftButtonUp="AssignProjectbtn_MouseLeftButtonUp" Content="Manage Group Project"/>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top">Manage Evaluations</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top">Evaluation of Each Group</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Bottom">Setting</Label>

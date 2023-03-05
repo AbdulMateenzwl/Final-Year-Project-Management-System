@@ -124,6 +124,7 @@ namespace FYP_MS
                 {
                     MessageBox.Show(ex.Message);
                 }
+                this.Close();
 
             }
         }
@@ -187,6 +188,7 @@ namespace FYP_MS
             if (madv.Row[0].ToString() == cadv.Row[0].ToString() || madv.Row[0].ToString() == iadv.Row[0].ToString())
             {
                 MessageBox.Show("Two Advisors can not be same.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
             return true;
         }

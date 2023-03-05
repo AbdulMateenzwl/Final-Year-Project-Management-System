@@ -48,10 +48,15 @@ namespace FYP_MS
             loadData();
         }
 
+        private void UpdateProjectDetail(object sender, RoutedEventArgs e)
+        {
+            // Update Group Project Details
+        }
         private void AssignProjectBtn_Click(object sender, RoutedEventArgs e)
         {
             AddAssignProject assignProject = new AddAssignProject();
             assignProject.ShowDialog();
+            loadData();
         }
     }
 }

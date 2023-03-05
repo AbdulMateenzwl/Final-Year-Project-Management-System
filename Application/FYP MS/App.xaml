@@ -81,8 +81,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        <!--Normal Button 2-->
+                <!--Normal Button 2-->
         <Style TargetType="Button" x:Key="Btntype2">
             <Setter Property="Foreground" Value="{StaticResource Basic Text Color}"></Setter>
             <Setter Property="TextBlock.TextAlignment" Value="Center" />

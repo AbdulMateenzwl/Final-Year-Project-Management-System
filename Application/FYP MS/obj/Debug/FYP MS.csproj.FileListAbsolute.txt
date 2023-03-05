@@ -62,3 +62,7 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\updateAdv.baml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\UpdateProject.g.cs
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\UpdateProject.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddAssignProject.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AssignProjectCRUD.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddAssignProject.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AssignProjectCRUD.baml

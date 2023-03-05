@@ -81,14 +81,15 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
-        public static DataTable GetAssignedProjectWithDetails()
+        public static DataTable GetAssignedProjectDetails(string str)
         {
             var con = Config.getConnection();
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand(" select GroupId,Project.Title ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 11 ) as [Main Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 12 ) as [Co Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 14 ) as [Industry Advisor] from GroupProject GP join Project on Project.Id = GP.ProjectId\r\n ", con))
+                using (SqlCommand cmd = new SqlCommand(" select GroupId,Project.Title ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 11 ) as [Main Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 12 ) as [Co Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 14 ) as [Industry Advisor] from GroupProject GP join Project on Project.Id = GP.ProjectId where project.Title like @str_ ", con))
                 {
+                    cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }

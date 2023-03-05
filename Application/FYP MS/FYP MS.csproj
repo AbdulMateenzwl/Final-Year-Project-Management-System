@@ -59,6 +59,9 @@
     <Compile Include="AddAdv.xaml.cs">
       <DependentUpon>AddAdv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddAssignProject.xaml.cs">
+      <DependentUpon>AddAssignProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddGrp.xaml.cs">
       <DependentUpon>AddGrp.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,9 @@
     </Compile>
     <Compile Include="AssignProject.xaml.cs">
       <DependentUpon>AssignProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssignProjectCRUD.xaml.cs">
+      <DependentUpon>AssignProjectCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\Advisor_Helper.cs" />
     <Compile Include="HelperClasses\Configuration.cs" />
@@ -105,6 +111,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddAssignProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddGrp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AssignProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AssignProjectCRUD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

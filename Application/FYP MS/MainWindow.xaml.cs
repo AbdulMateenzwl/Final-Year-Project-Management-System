@@ -39,7 +39,7 @@ namespace FYP_MS
 
         private void AssignProjectbtn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            AssignProject assignProject = new AssignProject();
+            AssignProjectCRUD assignProject = new AssignProjectCRUD();
             mainField.Children.Add(assignProject);
         }
     }

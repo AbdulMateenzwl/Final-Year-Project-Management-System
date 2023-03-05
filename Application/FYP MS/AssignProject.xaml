@@ -11,38 +11,38 @@
             <Label Margin="10 10 0 10" Content="Enter Project Name"></Label>
             <TextBox Name="SearchBar" TextChanged="SearchBar_TextChanged" Width="150" Height="20" Margin="5"></TextBox>
             <Button Content="Clear Text" Margin="5" Width="70" Style="{StaticResource Btntype1}" Click="Button_Click"></Button>
-            <Button x:Name="AssignBtn" Content="Assign Project" Margin="0 0 10 0 " Width="95" Style="{StaticResource Btntype1}" DockPanel.Dock="Right" Click="AssignBtn_Click"/>
-            <Button x:Name="UpdateProjectBtn" Click="UpdateProjectBtn_Click" Content="Update Project" Width="94" Style="{StaticResource Btntype1}" DockPanel.Dock="Right" />
+            <Button x:Name="AssignBtn" Content="Assign Project" Width="95" Style="{StaticResource Btntype1}"  Click="AssignBtn_Click"/>
+            <Button x:Name="UpdateProjectBtn" Click="UpdateProjectBtn_Click" Content="Update Project" DockPanel.Dock="Left" Width="94" Style="{StaticResource Btntype1}" />
         </DockPanel>
-        <Grid DockPanel.Dock="Top">
+        
+        <Grid DockPanel.Dock="Top" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Content="Select Group" Margin="15,5,5,5"/>
-            <Label Content="Select Project" Margin="15,5,5,5" Grid.Column="1"/>
-        </Grid>
-        <Grid DockPanel.Dock="Top" >
-            <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition MaxHeight="200"></RowDefinition>
+                <RowDefinition MaxHeight="200"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <DataGrid x:Name="GroupGrid"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" DockPanel.Dock="Top" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
-                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
-                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" />
+            <Label Content="Select Group" Margin="15,5,5,5"/>
+            <DataGrid x:Name="GroupGrid"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="15,10,20,0" DockPanel.Dock="Top" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                    AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
+                    CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" />
 
-                <DataGrid x:Name="ProjectGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,20,0" DockPanel.Dock="Top" Grid.Column="1" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
-                      AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
-                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True"/>
-
-            </Grid>
+            <DataGrid x:Name="ProjectGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,20,0" DockPanel.Dock="Top" Grid.Column="1" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                    AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" 
+                    CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True"/>
+            
+            <!--<Label Grid.Row="0" Grid.Column="2" Content="Assignment Date" Margin="15,5,5,5"/>-->
+            <DockPanel Grid.Row="0"  VerticalAlignment="Center" Grid.Column="1" LastChildFill="False">
+                <Label DockPanel.Dock="Left" Content="Select Project" Margin="15,5,5,5" />
+                
+                <DatePicker Name="Datepicker" Grid.Row="0" Width="30" VerticalAlignment="Center" DockPanel.Dock="Right" Margin=" 0 0 10 0"></DatePicker>
+                <Label DockPanel.Dock="Right" Content="Assignment Date" Margin="15,5,5,5" />
+                
+            </DockPanel>
         </Grid>
 
         <Grid DockPanel.Dock="Top" Margin="0,0,0,5" >

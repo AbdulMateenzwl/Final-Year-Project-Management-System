@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace FYP_MS.HelperClasses
 {
@@ -78,15 +79,6 @@ namespace FYP_MS.HelperClasses
         }
         public static void addStuGroup(int Gid,int Sid , bool status ,DateTime dtime)
         {
-            /*var con = Config.getConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"Insert into GroupStudent values( {Gid} , {Sid} , {status} , {dtime} )", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd); 
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            con.Close();*/
-
-
             var con = Config.getConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("Insert into GroupStudent values( @gid, @sid, @st, @dtim )", con);
@@ -118,6 +110,19 @@ namespace FYP_MS.HelperClasses
                 }
                 return dt;
             }
+        }
+        public static void AssignProject(int Gid,int Pid,DateTime dtime)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Insert into GroupProject values(@Pid , @Gid, @Dtime)", con);
+            cmd.Parameters.AddWithValue("Gid", Gid);
+            cmd.Parameters.AddWithValue("Pid", Pid);
+            cmd.Parameters.AddWithValue("Dtime", dtime);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
         }
     }
 }

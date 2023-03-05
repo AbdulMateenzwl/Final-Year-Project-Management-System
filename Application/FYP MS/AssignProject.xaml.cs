@@ -29,7 +29,7 @@ namespace FYP_MS
             InitializeComponent();
             loadData();
             ProjectGrid.Loaded += Grid_Loaded;
-            
+            Datepicker.SelectedDate = DateTime.Now;
         }
         private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
         {
@@ -107,15 +107,27 @@ namespace FYP_MS
 
         private void AssignBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Assign Project from selected vales 
-            DataRowView row = ProjectGrid.SelectedValue as DataRowView;
-            if (row == null)
+            if(validate())
             {
-                MessageBox.Show("Please select a Value from Project Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
-                MessageBox.Show(row.Row.ItemArray[1].ToString());
+                try
+                {
+                    // Assign Project from selected vales 
+                    DataRowView grow = GroupGrid.SelectedValue as DataRowView;
+                    DataRowView Prow = ProjectGrid.SelectedValue as DataRowView;
+                    Group_Helper.AssignProject(int.Parse(grow.Row[0].ToString()), int.Parse(Prow.Row[0].ToString()), Datepicker.SelectedDate.Value);
+                    // Assign Advisor to the Project Group
+                    DataRowView madv = MainAdvGrid.SelectedValue as DataRowView;
+                    Advisor_Helper.AssignAdvisor(int.Parse(madv.Row[0].ToString()), int.Parse(Prow.Row[0].ToString()), 11, DateTime.Now);
+                    DataRowView cadv = coAdvGrid.SelectedValue as DataRowView;
+                    Advisor_Helper.AssignAdvisor(int.Parse(cadv.Row[0].ToString()), int.Parse(Prow.Row[0].ToString()), 12, DateTime.Now);
+                    DataRowView iadv = IndAdvGrid.SelectedValue as DataRowView;
+                    Advisor_Helper.AssignAdvisor(int.Parse(iadv.Row[0].ToString()), int.Parse(Prow.Row[0].ToString()), 14, DateTime.Now);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
 
@@ -142,6 +154,44 @@ namespace FYP_MS
         private void UpdateProjectBtn_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+        private bool validate()
+        {
+            DataRowView row = ProjectGrid.SelectedValue as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please select a Value from Project Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }            
+            row = GroupGrid.SelectedValue as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please select a Group.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            DataRowView madv = MainAdvGrid.SelectedValue as DataRowView;
+            if (madv == null)
+            {
+                MessageBox.Show("Please select Main Advisor.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            DataRowView cadv = coAdvGrid.SelectedValue as DataRowView;
+            if (cadv == null)
+            {
+                MessageBox.Show("Please select Co Advisor.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            DataRowView iadv= IndAdvGrid.SelectedValue as DataRowView;
+            if (iadv == null)
+            {
+                MessageBox.Show("Please select Industry Advisor.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (madv.Row[0].ToString() == cadv.Row[0].ToString() || madv.Row[0].ToString() == iadv.Row[0].ToString())
+            {
+                MessageBox.Show("Two Advisors can not be same.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return true;
         }
     }
 }

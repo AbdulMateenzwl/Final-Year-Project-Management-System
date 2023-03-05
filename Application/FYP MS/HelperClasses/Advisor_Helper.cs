@@ -95,7 +95,7 @@ namespace FYP_MS.HelperClasses
                     "join person as p on s.id = p.id " +
                     "join lookup as l on p.gender = l.id " +
                     "join lookup as lo on s.Designation=lo.Id " +
-                    "where FirstName + LastName + Email + lo.value + contact like @str_ ", con))
+                    "where FirstName + LastName + Email + lo.value + contact like @str_ and p.id not in ( select u.advisorid from ProjectAdvisor as u )", con))
                 {
                     cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -103,6 +103,20 @@ namespace FYP_MS.HelperClasses
                 }
                 return dt;
             }
+        }
+        public static void AssignAdvisor(int advId,int Pid, int AdvRole, DateTime dtime)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into ProjectAdvisor values(@aid,@pid,@arole,@dtime)", con);
+            cmd.Parameters.AddWithValue("aid", advId);
+            cmd.Parameters.AddWithValue("pid", Pid);
+            cmd.Parameters.AddWithValue("arole", AdvRole);
+            cmd.Parameters.AddWithValue("dtime", dtime);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
         }
     }
 }

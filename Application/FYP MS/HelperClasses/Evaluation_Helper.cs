@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FYP_MS.HelperClasses
 {
@@ -67,7 +68,45 @@ namespace FYP_MS.HelperClasses
             con.Close();
             return list;
         }
-
+        public static int GetEvaluationIndex(int index)
+        {
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand("select id from Evaluation", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<int> list = new List<int>();
+            while (sdr.Read())
+            {
+                int val = sdr.GetInt32(0);
+                list.Add(val);
+            }
+            con.Close();
+            return list[index];
+        }
+        public static void AddGroupEvaluation(int GId, int EId, int OMarks, DateTime dtime)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into Groupevaluation values(@gid,@eid,@omarks, @dtime)", con);
+            cmd.Parameters.AddWithValue("gid", GId);
+            cmd.Parameters.AddWithValue("eid", EId);
+            cmd.Parameters.AddWithValue("omarks", OMarks);
+            cmd.Parameters.AddWithValue("dtime", dtime);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+        }
+        public static string GetTotalMarksofEvaluation(int Eid)
+        {
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand($"select TotalMarks from Evaluation where id = {Eid}", con);
+            con.Open();
+            int id = (int)cmd.ExecuteScalar();
+            con.Close();
+            return id.ToString();
+        }
 
     }
 }

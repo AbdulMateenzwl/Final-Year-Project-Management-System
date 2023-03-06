@@ -57,14 +57,10 @@ namespace FYP_MS
             EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
         }
 
-        private void EvalateGroup_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void EvalateGroupBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView row = EvlGroupGrid.SelectedItem as DataRowView;
+            DataRowView row = UnEvlGroupGrid.SelectedItem as DataRowView;
             if (row == null)
             {
                 MessageBox.Show("Please Select a Group from UnEvaluated Groups Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -74,6 +70,8 @@ namespace FYP_MS
                 try
                 {
                     // Evaluate Group Window
+                    AddGroupEvaluation addGroupEvaluation = new AddGroupEvaluation(int.Parse(row.Row[0].ToString()), Evaluation_Helper.GetEvaluationIndex(EvaluationNamecmbox.SelectedIndex), EvaluationNamecmbox.SelectedValue.ToString());
+                    addGroupEvaluation.ShowDialog();
                     loadEvaluatedGroup();
                     loadUnEvaluatedGroup();
                     GroupMembersGrid.ItemsSource = null;
@@ -98,7 +96,8 @@ namespace FYP_MS
             {
                 try
                 {
-                    // Edit the Evaluation Details Window
+                    // Update the Group Evaluation Details Window
+
                     loadEvaluatedGroup();
                     loadUnEvaluatedGroup();
                     GroupMembersGrid.ItemsSource = null;
@@ -114,8 +113,22 @@ namespace FYP_MS
 
         private void UnEvlGroupGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            MessageBox.Show("clicked");
+            DataRowView row = UnEvlGroupGrid.SelectedItem as DataRowView;
+            if (row != null)
+            {
+                try
+                {
+                    GroupMembersGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
 
+        private void UnEvlGroupGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
             DataRowView row = UnEvlGroupGrid.SelectedItem as DataRowView;
             if (row == null)
             {

@@ -65,6 +65,9 @@
     <Compile Include="AddEvaluation.xaml.cs">
       <DependentUpon>AddEvaluation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddGroupEvaluation.xaml.cs">
+      <DependentUpon>AddGroupEvaluation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddGrp.xaml.cs">
       <DependentUpon>AddGrp.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEvaluation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddGroupEvaluation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

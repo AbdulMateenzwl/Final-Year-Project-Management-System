@@ -43,7 +43,7 @@
             <DataGrid ColumnWidth="*" Grid.Row="1" Background="LightGray" RowBackground="LightYellow" DockPanel.Dock="Top"
                           AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="UnEvlGroupGrid" Margin="5" 
-                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MaxHeight="300" SelectedCellsChanged="UnEvlGroupGrid_SelectedCellsChanged" >
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MaxHeight="300" MouseDoubleClick="UnEvlGroupGrid_MouseDoubleClick" SelectedCellsChanged="UnEvlGroupGrid_SelectedCellsChanged" >
             </DataGrid>
 
             <Label Grid.Row="0" Grid.Column="1">Group Members</Label>

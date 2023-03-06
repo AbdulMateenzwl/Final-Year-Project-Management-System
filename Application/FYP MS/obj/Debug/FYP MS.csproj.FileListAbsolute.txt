@@ -74,3 +74,5 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\GroupEvaluation.baml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddGroupEvaluation.g.cs
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\AddGroupEvaluation.baml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\UpdateGroupEvaluation.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\UpdateGroupEvaluation.baml

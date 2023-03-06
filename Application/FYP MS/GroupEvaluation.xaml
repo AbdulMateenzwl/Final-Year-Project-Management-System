@@ -57,14 +57,14 @@
             <DataGrid Grid.Row="3" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
                           AlternatingRowBackground="{StaticResource Light Theme Text Color}"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="EvlGroupGrid" Margin="5" 
-                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" >
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseDoubleClick="EvlGroupGrid_MouseDoubleClick" SelectedCellsChanged="EvlGroupGrid_SelectedCellsChanged">
             </DataGrid>
 
             <Label Grid.Row="2" Grid.Column="1">Evaluation Details</Label>
             <DataGrid Grid.Row="3" ColumnWidth="*" Grid.Column="1" Background="LightGray" RowBackground="LightYellow"
                           AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="EvaluationsDetailsGrid" Margin="5"
-                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MouseLeftButtonUp="EvaluationsDetailsGrid_MouseLeftButtonUp">
             </DataGrid>
         </Grid>
     </DockPanel>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="FYP_MS.UpdateGroupEvaluation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FYP_MS"
+        mc:Ignorable="d" d:DesignHeight="190" d:DesignWidth="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" AllowsTransparency="True"
+      Title="Stu Edit" Height="190" Width="500" BorderBrush="Transparent" BorderThickness="10">
+
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="15" Direction ="-90" RenderingBias ="Quality" ShadowDepth ="5" Color ="Black" />
+    </Window.Effect>
+
+    <Canvas Background="{StaticResource Light Theme Text Color}">
+        <Label  Content="Evaluation Name" Canvas.Left="25" Canvas.Top="27" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label Content="Evaluation Date" Canvas.Left="226" Canvas.Top="31" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="EvlName" IsReadOnly="True" Canvas.Left="125" Canvas.Top="31" Width="88" HorizontalAlignment="Left" VerticalAlignment="Center" MaxLength="100"/>
+        <Label Content="Obtained Marks" Canvas.Left="225" Canvas.Top="73" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="TotalMarks" IsReadOnly="True" Canvas.Left="105" PreviewTextInput="TotalMarks_PreviewTextInput" Text="" Canvas.Top="77" Width="108" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="11"/>
+        <Label Content="Total Marks" Canvas.Left="22" Canvas.Top="73" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Canvas.Left="325" x:Name="ObtainedMarks" PreviewTextInput="ObtainedMarks_PreviewTextInput" TextWrapping="Wrap" Canvas.Top="77" Width="135" HorizontalAlignment="Center" VerticalAlignment="Top" MaxLength="12"/>
+        <Button  x:Name="donebtn" Content="Save" Canvas.Left="258" Canvas.Top="125" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource donebtn}" Click="donebtn_Click"/>
+        <Button Content="Cancel" Canvas.Left="165" Canvas.Top="125" RenderTransformOrigin="0.681,-1.002" Height="35" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource cancelbtn}" Click="Cancel_Click"/>
+        <DatePicker Name="EvlDatepicker" Canvas.Left="325" Canvas.Top="31" HorizontalAlignment="Left" VerticalAlignment="Center" Width="135"></DatePicker>
+    </Canvas>
+</Window>

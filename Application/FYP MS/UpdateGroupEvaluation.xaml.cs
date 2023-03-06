@@ -17,20 +17,21 @@ using System.Windows.Shapes;
 namespace FYP_MS
 {
     /// <summary>
-    /// Interaction logic for AddGroupEvaluation.xaml
+    /// Interaction logic for UpdateGroupEvaluation.xaml
     /// </summary>
-    public partial class AddGroupEvaluation : Window
+    public partial class UpdateGroupEvaluation : Window
     {
         private int GroupId = 0;
         private int EvlId = 0;
-        public AddGroupEvaluation(int groupId, int evlId, string evlName)
+        public UpdateGroupEvaluation(int groupId, int evlId, string evlName,int obtainedMarks ,DateTime evlDate)
         {
             InitializeComponent();
-            EvlDatepicker.SelectedDate = DateTime.Now;
+            EvlDatepicker.SelectedDate = evlDate;
             EvlName.Text = evlName;
             GroupId = groupId;
             EvlId = evlId;
             TotalMarks.Text = Evaluation_Helper.GetTotalMarksofEvaluation(evlId);
+            ObtainedMarks.Text = obtainedMarks.ToString();
         }
 
         private void ObtainedMarks_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -50,22 +51,20 @@ namespace FYP_MS
 
         private void donebtn_Click(object sender, RoutedEventArgs e)
         {
-            if(validate())
+            if (validate())
             {
-                try
-                {
-                    Evaluation_Helper.AddGroupEvaluation(GroupId, EvlId, int.Parse(ObtainedMarks.Text.ToString()), EvlDatepicker.SelectedDate.Value);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Error Saving data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                Evaluation_Helper.UpdateGroupEvaluation(GroupId, EvlId, int.Parse(ObtainedMarks.Text.ToString()), EvlDatepicker.SelectedDate.Value);
                 this.Close();
             }
         }
         private bool validate()
         {
-            return int.TryParse(ObtainedMarks.Text.ToString(),out int u);
+            if(int.TryParse(ObtainedMarks.Text.ToString(), out int u))
+            {
+                MessageBox.Show("Marks must be integar.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            return true;
         }
     }
 }

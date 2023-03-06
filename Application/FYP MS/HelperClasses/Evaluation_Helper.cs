@@ -52,6 +52,18 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
+        public static DataTable GetEvaluationFromGid (int Gid)
+        {
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand("select E.Id,GE.GroupId, E.Name, GE.ObtainedMarks, E.TotalMarks, E.TotalWeightage,GE.EvaluationDate from Evaluation E join GroupEvaluation GE on E.Id = GE.EvaluationId where GE.GroupId = @Gid", con);
+            cmd.Parameters.AddWithValue("Gid", Gid);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dt.Load(sdr);
+            con.Close();
+            return dt;
+        }
         public static List<string> getEvaluationName()
         {
             var con = Config.getConnection();
@@ -93,6 +105,20 @@ namespace FYP_MS.HelperClasses
             cmd.Parameters.AddWithValue("eid", EId);
             cmd.Parameters.AddWithValue("omarks", OMarks);
             cmd.Parameters.AddWithValue("dtime", dtime);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+        }
+        public static void UpdateGroupEvaluation(int GId, int EId, int OMarks, DateTime dtime)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Update GroupEvaluation set obtainedmarks = @omarks , evaluationDate = @dtime where groupid = @gid and Evaluationid = @eid", con);
+            cmd.Parameters.AddWithValue("gid", GId);
+            cmd.Parameters.AddWithValue("eid", EId);
+            cmd.Parameters.AddWithValue("dtime", dtime);
+            cmd.Parameters.AddWithValue("omarks", OMarks);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

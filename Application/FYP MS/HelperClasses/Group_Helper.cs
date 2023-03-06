@@ -127,15 +127,47 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
+        public static DataTable SearchUnEvaluated(string Evl, int id)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id", con))
+                {
+                    cmd.Parameters.AddWithValue("EVL", Evl);
+                    cmd.Parameters.AddWithValue("id", id);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
         public static DataTable GetEvaluated(string Evl)
         {
             var con = Config.getConnection();
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id = ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
                 {
                     cmd.Parameters.AddWithValue("EVL", Evl);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        public static DataTable SearchEvaluated(string Evl, int id)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id", con))
+                {
+                    cmd.Parameters.AddWithValue("EVL", Evl);
+                    cmd.Parameters.AddWithValue("id", id);
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }

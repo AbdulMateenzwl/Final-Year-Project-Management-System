@@ -113,6 +113,9 @@
     <Compile Include="UpdateEvaluation.xaml.cs">
       <DependentUpon>UpdateEvaluation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateGroupEvaluation.xaml.cs">
+      <DependentUpon>UpdateGroupEvaluation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateProject.xaml.cs">
       <DependentUpon>UpdateProject.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateEvaluation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateGroupEvaluation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

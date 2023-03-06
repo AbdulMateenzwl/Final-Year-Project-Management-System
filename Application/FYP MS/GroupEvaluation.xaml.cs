@@ -29,12 +29,14 @@ namespace FYP_MS
             EvaluationNamecmbox.ItemsSource = Evaluation_Helper.getEvaluationName();
             EvaluationNamecmbox.SelectedIndex = 0;
             loadUnEvaluatedGroup();
+            loadEvaluatedGroup();
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Load Evaluated and unEvaluated Groups with the same name
-
+            loadEvaluatedGroup();
+            loadUnEvaluatedGroup();
         }
 
         private void clearTxt_Click(object sender, RoutedEventArgs e)
@@ -47,16 +49,42 @@ namespace FYP_MS
             // Load Groups with specific Evaluation
             loadUnEvaluatedGroup();
             loadEvaluatedGroup();
+            EvaluationsDetailsGrid.ItemsSource = null;
+            GroupMembersGrid.ItemsSource = null;
         }
         private void loadUnEvaluatedGroup()
         {
-            UnEvlGroupGrid.ItemsSource = Group_Helper.GetUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+            if (int.TryParse(SearchBar.Text.ToString(),out int id))
+            {
+                UnEvlGroupGrid.ItemsSource = Group_Helper.SearchUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString(),int.Parse(SearchBar.Text.ToString())).DefaultView; 
+            }
+            else
+            {
+                UnEvlGroupGrid.ItemsSource = Group_Helper.GetUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+            }
         }
         private void loadEvaluatedGroup()
         {
-            EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+            if (int.TryParse(SearchBar.Text.ToString(), out int id))
+            {
+                EvlGroupGrid.ItemsSource = Group_Helper.SearchEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
+            }
+            else
+            {
+                EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+            }
         }
 
+        private void StuGrid_Loaded()
+        {
+            try { GroupMembersGrid.Columns[0].Visibility = Visibility.Collapsed; } catch { }
+        }
+        
+        private void EvlGrid_Loaded()
+        {
+            try { EvaluationsDetailsGrid.Columns[0].Visibility = Visibility.Collapsed; 
+                EvaluationsDetailsGrid.Columns[1].Visibility = Visibility.Collapsed; } catch { }
+        }
 
         private void EvalateGroupBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +104,6 @@ namespace FYP_MS
                     loadUnEvaluatedGroup();
                     GroupMembersGrid.ItemsSource = null;
                     EvaluationsDetailsGrid.ItemsSource = null;
-                    //Grid_Loaded();
                 }
                 catch (Exception ex)
                 {
@@ -87,22 +114,23 @@ namespace FYP_MS
 
         private void UpdateEvlBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView row = EvlGroupGrid.SelectedItem as DataRowView;
+            DataRowView row = EvaluationsDetailsGrid.SelectedItem as DataRowView;
             if (row == null)
             {
-                MessageBox.Show("Please Select a Group from UnEvaluated Groups Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please Select a Evaluation from Evaluation Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 try
                 {
-                    // Update the Group Evaluation Details Window
-
+                    //Update the Group Evaluation Details Window
+                    UpdateGroupEvaluation updateGroupEvaluation = new UpdateGroupEvaluation(int.Parse(row.Row[1].ToString()), int.Parse(row.Row[0].ToString()), EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(row.Row[3].ToString()) , (DateTime)row.Row[6]);
+                    updateGroupEvaluation.ShowDialog();
                     loadEvaluatedGroup();
                     loadUnEvaluatedGroup();
+                    EvlGroupGrid_SelectedCellsChanged();
                     GroupMembersGrid.ItemsSource = null;
                     EvaluationsDetailsGrid.ItemsSource = null;
-                    //Grid_Loaded();
                 }
                 catch (Exception ex)
                 {
@@ -119,6 +147,9 @@ namespace FYP_MS
                 try
                 {
                     GroupMembersGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    StuGrid_Loaded();
+                    EvaluationsDetailsGrid.ItemsSource = Evaluation_Helper.GetEvaluationFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    EvlGrid_Loaded();
                 }
                 catch (Exception ex)
                 {
@@ -139,12 +170,64 @@ namespace FYP_MS
                 try
                 {
                     GroupMembersGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    StuGrid_Loaded();
+                    EvaluationsDetailsGrid.ItemsSource = Evaluation_Helper.GetEvaluationFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    EvlGrid_Loaded();
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error Updating data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+        }
+
+        private void EvlGroupGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView row = EvlGroupGrid.SelectedItem as DataRowView;
+            if (row == null)
+            {
+                MessageBox.Show("Please Select a Group from UnEvaluated Groups Table.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                try
+                {
+                    GroupMembersGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    StuGrid_Loaded();
+                    EvaluationsDetailsGrid.ItemsSource = Evaluation_Helper.GetEvaluationFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    EvlGrid_Loaded();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Loading data into Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        private void EvlGroupGrid_SelectedCellsChanged(object sender=null, SelectedCellsChangedEventArgs e=null)
+        {
+            DataRowView row = EvlGroupGrid.SelectedItem as DataRowView;
+            if (row != null)
+            {
+                try
+                {
+                    GroupMembersGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    StuGrid_Loaded();
+                    EvaluationsDetailsGrid.ItemsSource = Evaluation_Helper.GetEvaluationFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    EvlGrid_Loaded();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error Loading data from Database " + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        private void EvaluationsDetailsGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -118,7 +118,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and id in (select gp.GroupId from GroupProject GP) ", con))
                 {
                     cmd.Parameters.AddWithValue("EVL", Evl);
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -133,7 +133,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id", con))
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id and id in (select gp.GroupId from GroupProject GP) ", con))
                 {
                     cmd.Parameters.AddWithValue("EVL", Evl);
                     cmd.Parameters.AddWithValue("id", id);
@@ -149,7 +149,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and id in (select gp.GroupId from GroupProject GP)", con))
                 {
                     cmd.Parameters.AddWithValue("EVL", Evl);
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -164,7 +164,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id", con))
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id and id in (select gp.GroupId from GroupProject GP) ", con))
                 {
                     cmd.Parameters.AddWithValue("EVL", Evl);
                     cmd.Parameters.AddWithValue("id", id);
@@ -187,6 +187,24 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
-
+        public static DataTable getStudentNotInGroup(string str = "")
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select p.id,p.FirstName,p.LastName,s.RegistrationNo,p.Contact,p.Email " +
+                    "from student as s " +
+                    "join person as p on s.id = p.id " +
+                    "join lookup as l on p.gender = l.id " +
+                    "where FirstName + LastName + RegistrationNo + Email + l.value + contact like @str and p.id not in ( select GS.studentid from GroupStudent as GS where GS.status = 1)", con))
+                {
+                    cmd.Parameters.AddWithValue("str", string.Format("%{0}%", str));
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
     }
 }

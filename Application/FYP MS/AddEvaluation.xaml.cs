@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,9 +69,11 @@ namespace FYP_MS
                 MessageBox.Show("Marks Must be a postive Number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
-            if (!validations.percent(int.Parse(WeightAgetxtbox.Text.ToString())))
+            int value = int.Parse(WeightAgetxtbox.Text.ToString());
+            int taken_percent = Evaluation_Helper.GetAssigedPercentageEvaluations();
+            if (value + taken_percent > 100)
             {
-                MessageBox.Show("WeightAge Must Between 0 - 100 (Percent).", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                MessageBox.Show($"Total percentage will become {value + taken_percent}. Please Select value less than {100 - taken_percent}.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             return true;

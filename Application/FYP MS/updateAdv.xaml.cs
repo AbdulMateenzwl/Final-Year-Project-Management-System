@@ -85,7 +85,7 @@ namespace FYP_MS
                 MessageBox.Show("Age is Below 16", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
-            if (!validations.greaterThanZero(int.Parse(Salarytxtbox.Text)))
+            if (!int.TryParse(Salarytxtbox.Text,out int ans))
             {
                 MessageBox.Show("Salary Must be a postive Number.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;

@@ -41,8 +41,7 @@ namespace FYP_MS
         {
             try
             {
-                AllStudents.ItemsSource = Stu_Helper.getStudentNotInGroup(SearchBar.Text).DefaultView;
-
+                AllStudents.ItemsSource = Group_Helper.getStudentNotInGroup(SearchBar.Text).DefaultView;
             }
             catch (Exception ex)
             {

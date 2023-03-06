@@ -59,9 +59,14 @@ namespace FYP_MS
         }
         private bool validate()
         {
-            if(int.TryParse(ObtainedMarks.Text.ToString(), out int u))
+            if(!int.TryParse(ObtainedMarks.Text.ToString(), out int u))
             {
                 MessageBox.Show("Marks must be integar.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
+                return false;
+            }
+            if (int.Parse(ObtainedMarks.Text.ToString()) > int.Parse(TotalMarks.Text.ToString()))
+            {
+                MessageBox.Show("Obtained Marks cannot be more than Total Marks.", "Alert", MessageBoxButton.OK, MessageBoxImage.Question);
                 return false;
             }
             return true;

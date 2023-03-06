@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 
 namespace FYP_MS.HelperClasses
@@ -133,6 +134,15 @@ namespace FYP_MS.HelperClasses
             con.Close();
             return id.ToString();
         }
-
+        public static int GetAssigedPercentageEvaluations()
+        {
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand("select sum(totalweightage) from Evaluation ", con);
+            con.Open();
+            var id = cmd.ExecuteScalar();
+            if (id == null) return 0;
+            con.Close();
+            return (int)id;
+        }
     }
 }

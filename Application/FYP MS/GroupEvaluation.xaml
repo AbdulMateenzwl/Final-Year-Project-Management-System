@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="FYP_MS.GroupEvaluation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FYP_MS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel Background="AliceBlue" >
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="289*"></ColumnDefinition>
+                <ColumnDefinition Width="278*"></ColumnDefinition>
+                <ColumnDefinition Width="112*"></ColumnDefinition>
+                <ColumnDefinition Width="121*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="10 10 0 10" Content="Search"></Label>
+                <TextBox Name="SearchBar" Width="120" TextChanged="SearchBar_TextChanged" Height="20" Margin="5"></TextBox>
+                <Button Content="Clear Text" Margin="5" x:Name="ClearBtn" Click="clearTxt_Click" Width="70" Style="{StaticResource Btntype1}"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Label Margin="10 10 0 10" Content="Select Evaluation"></Label>
+                <ComboBox x:Name="EvaluationNamecmbox" SelectionChanged="EvaluationNamecmbox_SelectionChanged" Width="150" Margin="5 10 5 10"></ComboBox>
+            </StackPanel>
+            <Button Grid.Column="2" Content="Evaluate Group" Margin="5,10,5,11"  x:Name="EvalateGroupBtn" Click="EvalateGroupBtn_Click" Style="{StaticResource Btntype1}"/>
+            <Button Grid.Column="3" Content="Edit Evaluation" x:Name="UpdateEvlBtn" Click="UpdateEvlBtn_Click" Style="{StaticResource Btntype1}" Margin="5,10,10,11"/>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label>UnEvaluated Groups</Label>
+            <DataGrid ColumnWidth="*" Grid.Row="1" Background="LightGray" RowBackground="LightYellow" DockPanel.Dock="Top"
+                          AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="UnEvlGroupGrid" Margin="5" 
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MaxHeight="300" SelectedCellsChanged="UnEvlGroupGrid_SelectedCellsChanged" >
+            </DataGrid>
+
+            <Label Grid.Row="0" Grid.Column="1">Group Members</Label>
+            <DataGrid ColumnWidth="*" Grid.Row="1" Grid.Column="1" Background="LightGray" RowBackground="LightYellow" DockPanel.Dock="Top"
+                          AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="GroupMembersGrid" Margin="5" 
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" MaxHeight="300" >
+            </DataGrid>
+
+            <Label Grid.Row="2">Evaluated Group</Label>
+            <DataGrid Grid.Row="3" ColumnWidth="*" Background="LightGray" RowBackground="LightYellow" 
+                          AlternatingRowBackground="{StaticResource Light Theme Text Color}"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="EvlGroupGrid" Margin="5" 
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True" >
+            </DataGrid>
+
+            <Label Grid.Row="2" Grid.Column="1">Evaluation Details</Label>
+            <DataGrid Grid.Row="3" ColumnWidth="*" Grid.Column="1" Background="LightGray" RowBackground="LightYellow"
+                          AlternatingRowBackground="{StaticResource Light Theme Text Color}"   
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="EvaluationsDetailsGrid" Margin="5"
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" IsReadOnly="True">
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</UserControl>

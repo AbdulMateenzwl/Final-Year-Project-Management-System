@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Windows.Controls;
 
 namespace FYP_MS.HelperClasses
 {
@@ -111,6 +112,36 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
+        public static DataTable GetUnEvaluated(string Evl)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
+                {
+                    cmd.Parameters.AddWithValue("EVL", Evl);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        public static DataTable GetEvaluated(string Evl)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id = ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL)", con))
+                {
+                    cmd.Parameters.AddWithValue("EVL", Evl);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
         public static void AssignProject(int Gid,int Pid,DateTime dtime)
         {
             var con = Config.getConnection();
@@ -124,5 +155,6 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
+
     }
 }

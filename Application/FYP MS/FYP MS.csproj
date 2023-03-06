@@ -83,6 +83,9 @@
     <Compile Include="EvaluationCRUD.xaml.cs">
       <DependentUpon>EvaluationCRUD.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupEvaluation.xaml.cs">
+      <DependentUpon>GroupEvaluation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelperClasses\Advisor_Helper.cs" />
     <Compile Include="HelperClasses\Configuration.cs" />
     <Compile Include="GroupCRUD.xaml.cs">
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GroupCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupEvaluation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

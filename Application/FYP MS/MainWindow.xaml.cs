@@ -54,5 +54,13 @@ namespace FYP_MS
             mainField.Children.Clear();
             mainField.Children.Add(evaluationCRUD);
         }
+
+        private void GroupEvaluation_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            GroupEvaluation GroupEvl = new GroupEvaluation();
+            mainField.Children.Clear();
+            mainField.Children.Add(GroupEvl);
+        }
+
     }
 }

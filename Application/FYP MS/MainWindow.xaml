@@ -18,9 +18,9 @@
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="Projectbtn" MouseLeftButtonUp="Projectbtn_MouseLeftButtonUp">Manage Projects</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="GroupManagebtn" MouseLeftButtonUp="GroupManagebtn_MouseLeftButtonUp">Manage Group</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="AssignProjectbtn" MouseLeftButtonUp="AssignProjectbtn_MouseLeftButtonUp" Content="Manage Group Project"/>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" Name="EvalutionBtn" MouseLeftButtonUp="EvalutionBtn_MouseLeftButtonUp">Manage Evaluations</Label>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top">Evaluation of Each Group</Label>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Bottom">Setting</Label>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="EvalutionBtn" MouseLeftButtonUp="EvalutionBtn_MouseLeftButtonUp">Manage Evaluations</Label>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="GroupEvaluation" MouseLeftButtonUp="GroupEvaluation_MouseLeftButtonUp">Manage Group Evaluation </Label>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Bottom" >Setting</Label>
         </DockPanel>
             
         

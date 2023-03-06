@@ -51,6 +51,23 @@ namespace FYP_MS.HelperClasses
             da.Fill(dt);
             con.Close();
         }
+        public static List<string> getEvaluationName()
+        {
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand("select name from Evaluation", con);
+            DataTable dt = new DataTable();
+            con.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<string> list = new List<string>();
+            while (sdr.Read())
+            {
+                string gender = sdr.GetString(0);
+                list.Add(gender);
+            }
+            con.Close();
+            return list;
+        }
+
 
     }
 }

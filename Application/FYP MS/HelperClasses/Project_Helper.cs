@@ -41,7 +41,7 @@ namespace FYP_MS.HelperClasses
         public static DataTable GetProjectTable()
         {
             var con = Config.getConnection();
-            SqlCommand cmd = new SqlCommand("Select id,title,Description from Project", con);
+            SqlCommand cmd = new SqlCommand("Select id,title AS Title,Description from Project", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -55,7 +55,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("Select id,title,Description from Project " +
+                using (SqlCommand cmd = new SqlCommand("Select id,title AS Title ,Description from Project " +
                     "where Title + Description like @str_ ", con))
                 {
                     cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));

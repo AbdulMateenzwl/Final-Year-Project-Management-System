@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Security.Cryptography;
 
 namespace FYP_MS.HelperClasses
 {
@@ -41,7 +42,7 @@ namespace FYP_MS.HelperClasses
         public static DataTable GetProjectTable()
         {
             var con = Config.getConnection();
-            SqlCommand cmd = new SqlCommand("Select id,title,Description from Project", con);
+            SqlCommand cmd = new SqlCommand("Select id,title AS Title,Description from Project", con);
             DataTable dt = new DataTable();
             con.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -55,7 +56,7 @@ namespace FYP_MS.HelperClasses
             con.Open();
             using (DataTable dt = new DataTable("Person"))
             {
-                using (SqlCommand cmd = new SqlCommand("Select id,title,Description from Project " +
+                using (SqlCommand cmd = new SqlCommand("Select id,title AS Title ,Description from Project " +
                     "where Title + Description like @str_ ", con))
                 {
                     cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
@@ -81,7 +82,22 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
-        public static DataTable GetAssignedProjectDetails(string str)
+        public static DataTable GetGroupAssigned()
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select * from Project " +
+                    "where Project.Id in ( select s.ProjectId from GroupProject as s ) ", con))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        public static DataTable GetAssignedProjectDetails(string str=null)
         {
             var con = Config.getConnection();
             con.Open();
@@ -96,5 +112,44 @@ namespace FYP_MS.HelperClasses
                 return dt;
             }
         }
+        
+        public static DataTable GetProjectWithAdvisorsNames(string str=null)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand(" select GroupId,Project.Title ,GP.AssignmentDate ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 11 ) as [Main Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 12 ) as [Co Advisor] ,(select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 14 ) as [Industry Advisor] from GroupProject GP join Project on Project.Id = GP.ProjectId where project.Title like @str_ ", con))
+                {
+                    cmd.Parameters.AddWithValue("str_", string.Format("%{0}%", str));
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        
+        /*public static string getMainAdvisor(int GID,int PID)
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select Person.FirstName+' '+Person.LastName from ProjectAdvisor PA join Person on Person.Id= Pa.AdvisorId where GP.ProjectId = Pa.ProjectId and PA.AdvisorRole = 11 ) as [Main Advisor] ", con))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+
+            var con = Config.getConnection();
+            SqlCommand cmd = new SqlCommand($"select TotalMarks from Evaluation where id = {Eid}", con);
+            con.Open();
+            int id = (int)cmd.ExecuteScalar();
+            con.Close();
+            return id.ToString();
+        }*/
+
     }
 }

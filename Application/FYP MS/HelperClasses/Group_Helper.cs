@@ -96,7 +96,7 @@ namespace FYP_MS.HelperClasses
         {
             var con = Config.getConnection();
             con.Open();
-            using (DataTable dt = new DataTable("Person"))
+            using (DataTable dt = new DataTable("Student"))
             {
                 using (SqlCommand cmd = new SqlCommand("Select p.id,p.FirstName,p.LastName,s.RegistrationNo,p.Contact,p.Email " +
                     "from student as s " +
@@ -131,7 +131,7 @@ namespace FYP_MS.HelperClasses
         {
             var con = Config.getConnection();
             con.Open();
-            using (DataTable dt = new DataTable("Person"))
+            using (DataTable dt = new DataTable())
             {
                 using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] AS G where id not in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and G.id = @id and id in (select gp.GroupId from GroupProject GP) ", con))
                 {
@@ -147,7 +147,7 @@ namespace FYP_MS.HelperClasses
         {
             var con = Config.getConnection();
             con.Open();
-            using (DataTable dt = new DataTable("Person"))
+            using (DataTable dt = new DataTable())
             {
                 using (SqlCommand cmd = new SqlCommand("select * from [dbo].[group] where id in ( select groupid from GroupEvaluation join Evaluation AS EVL on EVL.Id = GroupEvaluation.EvaluationId where EVL.Name like @EVL) and id in (select gp.GroupId from GroupProject GP)", con))
                 {
@@ -200,6 +200,20 @@ namespace FYP_MS.HelperClasses
                     "where FirstName + LastName + RegistrationNo + Email + l.value + contact like @str and p.id not in ( select GS.studentid from GroupStudent as GS where GS.status = 1)", con))
                 {
                     cmd.Parameters.AddWithValue("str", string.Format("%{0}%", str));
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                }
+                return dt;
+            }
+        }
+        public static DataTable getGroupWithProjects()
+        {
+            var con = Config.getConnection();
+            con.Open();
+            using (DataTable dt = new DataTable("Person"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from GroupProject", con))
+                {
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                 }

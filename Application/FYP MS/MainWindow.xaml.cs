@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FYP_MS.HelperClasses;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FYP_MS
@@ -62,5 +63,11 @@ namespace FYP_MS
             mainField.Children.Add(GroupEvl);
         }
 
+        private void CreateReports_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            GenerateReport GroupEvl = new GenerateReport();
+            mainField.Children.Clear();
+            mainField.Children.Add(GroupEvl);
+        }
     }
 }

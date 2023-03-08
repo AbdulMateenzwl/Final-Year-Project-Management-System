@@ -15,6 +15,7 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Data;
+using System.Windows.Documents;
 
 namespace FYP_MS.HelperClasses
 {
@@ -23,6 +24,14 @@ namespace FYP_MS.HelperClasses
     /// </summary>
     public partial class GenerateReport : UserControl
     {
+        // Fonts
+        static BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+        // Text Sizes
+        Font FirstHeading = new iTextSharp.text.Font(bf, 16, iTextSharp.text.Font.BOLD);
+        Font SecondHeading = new iTextSharp.text.Font(bf, 14, iTextSharp.text.Font.BOLD);
+        Font ThirdHeading = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.BOLD);
+        Font HeadFont = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.NORMAL);
+        Font Parafont = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
         public GenerateReport()
         {
             InitializeComponent();
@@ -42,27 +51,62 @@ namespace FYP_MS.HelperClasses
 
 
 
-
-
-
-            // Fonts
-            BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-            // Text Sizes
-            Font Heading = new iTextSharp.text.Font(bf, 16, iTextSharp.text.Font.NORMAL);
-            Font Parafont = new iTextSharp.text.Font(bf, 12, iTextSharp.text.Font.NORMAL);
-
-            // Repeated values
-            PdfPTable table=null;
-            DataTable dataTable = null;
-
+            
             ////////////////// Student Section
-            Paragraph StudentHeading = new Paragraph("Students", Heading);
-            StudentHeading.IndentationLeft = 20;
-            doc.Add(StudentHeading);
+            AddFirstHeading("Students", ref doc);
+            AddStudentTable(ref doc);
+            // End Student Section
 
-            ////////  Student Table 
-            dataTable = Stu_Helper.GetStudentTableDetails();
-            table = new PdfPTable(dataTable.Columns.Count - 1);
+            ////////////////// Advisors Section
+
+            // End Advisors Section
+
+            ///////////////////  Project Section
+            AddFirstHeading("Projects",ref doc);
+            AddProjectsTable(ref doc);
+            // End Project Secion
+
+            ////////// Assigned Advisor with there Students Section
+            AddFirstHeading("Groups with Assigned Project and Advisors",ref doc);
+            AddAdvisorsWithStudents(ref doc);
+            //End Advisors Student Section
+
+            doc.Close();
+        }
+        private void AddFirstHeading(string str,ref Document doc)
+        {
+            iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, FirstHeading);
+            StudentFirstHeading.IndentationLeft = 40;
+            doc.Add(StudentFirstHeading);
+        }
+        private void AddSecHeading(string str,ref Document doc)
+        {
+            iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, SecondHeading);
+            StudentFirstHeading.IndentationLeft = 40;
+            doc.Add(StudentFirstHeading);
+        }
+        private void AddThirdHeading(string str,ref Document doc)
+        {
+            iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, ThirdHeading);
+            StudentFirstHeading.IndentationLeft = 40;
+            doc.Add(StudentFirstHeading);
+        }
+        private void AddFontHeading(string str,ref Document doc)
+        {
+            iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, HeadFont);
+            StudentFirstHeading.IndentationLeft = 40;
+            doc.Add(StudentFirstHeading);
+        }
+        private void AddPara(string str,ref Document doc)
+        {
+            iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, Parafont);
+            StudentFirstHeading.IndentationLeft = 40;
+            doc.Add(StudentFirstHeading);
+        }
+        private void AddStudentTable(ref Document doc)
+        {
+            DataTable dataTable = Stu_Helper.GetStudentTableDetails();
+            PdfPTable table = new PdfPTable(dataTable.Columns.Count - 1);
             table.SpacingBefore = 10;
 
             for (int i = 1; i < dataTable.Columns.Count; i++)
@@ -90,19 +134,12 @@ namespace FYP_MS.HelperClasses
             }
 
             doc.Add(table);
-            // End Student Section
-
-
-            ///////////////////  Project Section
-            Paragraph ProjectsHeading= new Paragraph("Projects", Heading);
-            ProjectsHeading.IndentationLeft = 20;
-            doc.Add(ProjectsHeading);
-
-            ///////////// Projects DataTable
-            dataTable = Project_Helper.GetProjectTable();
-            table = new PdfPTable(dataTable.Columns.Count - 1);
+        }
+        private void AddProjectsTable(ref Document doc)
+        {
+            DataTable  dataTable = Project_Helper.GetProjectTable();
+            PdfPTable table = new PdfPTable(dataTable.Columns.Count - 1);
             table.SpacingBefore = 10;
-
             for (int i = 1; i < dataTable.Columns.Count; i++)
             {
                 table.AddCell(new Phrase(dataTable.Columns[i].ColumnName));
@@ -113,20 +150,84 @@ namespace FYP_MS.HelperClasses
             {
                 string title = row["Title"].ToString();
                 string description = row["Description"].ToString();
-                table.AddCell(new Phrase(title,Parafont));
-                table.AddCell(new Phrase(description,Parafont));
+                table.AddCell(new Phrase(title, Parafont));
+                table.AddCell(new Phrase(description, Parafont));
             }
             doc.Add(table);
-
-
-
-
-
-
-
+        }
+        private void AddAdvisorsWithStudents(ref Document doc)
+        {
+            DataTable dataTable = Project_Helper.GetProjectWithAdvisorsNames();
             
+            foreach (DataRow row in dataTable.Rows)
+            {
+                int Gid = int.Parse(row["GroupId"].ToString());
+                string Title = row["Title"].ToString();
+                DateTime assignDate = (DateTime)row["AssignmentDate"];
+                string MAdv= row["Main Advisor"].ToString();
+                string CAdv= row["Co Advisor"].ToString();
+                string IAdv= row["Industry Advisor"].ToString();
+                AddSecHeading(Title + ' ' + Gid, ref doc);
+                AddPara($"The topic of Group {Gid} is {Title}.Project Assign Date is {assignDate}. The Advisors Assigned to the group are ",ref doc);
+                AddFontHeading($"Main Advisor : {MAdv}", ref doc);
+                AddFontHeading($"Co Advisor : {CAdv}", ref doc);
+                AddFontHeading($"Industry Advisor : {IAdv}", ref doc);
+                AddFontHeading($"Project Assign Date is  {assignDate}", ref doc);
 
-            doc.Close();
+
+                //Each Group Student Table
+                AddThirdHeading("Group Students", ref doc);
+                DataTable dTable = Group_Helper.GetStuFromGid(Gid);
+                PdfPTable table = new PdfPTable(dTable.Columns.Count - 1);
+                table.SpacingBefore = 10;
+                for (int i = 1; i < dTable.Columns.Count; i++)
+                {
+                    table.AddCell(new Phrase(dTable.Columns[i].ColumnName));
+                }
+                table.HeaderRows = 1;
+                foreach (DataRow Row in dTable.Rows)
+                {
+                    string firstname = Row["FirstName"].ToString();
+                    string lastname = Row["LastName"].ToString();
+                    string registrationno = Row["RegistrationNo"].ToString();
+                    string contact = Row["Contact"].ToString();
+                    string email = Row["Email"].ToString();
+                    table.AddCell(new Phrase(firstname, Parafont));
+                    table.AddCell(new Phrase(lastname, Parafont));
+                    table.AddCell(new Phrase(registrationno, Parafont));
+                    table.AddCell(new Phrase(contact, Parafont));
+                    table.AddCell(new Phrase(email, Parafont));
+                }
+                doc.Add(table);
+
+                //Each Group Evaluations Table
+                dTable = Evaluation_Helper.GetEvaluationFromGid(Gid);
+                if (dTable.Rows.Count>1)
+                {
+                    AddThirdHeading("Group Evaluations", ref doc);
+                }
+                table = new PdfPTable(dTable.Columns.Count - 2);
+                table.SpacingBefore = 10;
+                for (int i = 2; i < dTable.Columns.Count; i++)
+                {
+                    table.AddCell(new Phrase(dTable.Columns[i].ColumnName));
+                }
+                table.HeaderRows = 1;
+                foreach (DataRow Row in dTable.Rows)
+                {
+                    string Ename = Row["Name"].ToString();
+                    string Omarks= Row["ObtainedMarks"].ToString();
+                    string TMarks= Row["TotalMarks"].ToString();
+                    string TWeightAge = Row["TotalWeightage"].ToString();
+                    DateTime Dtime = (DateTime)Row["EvaluationDate"];
+                    table.AddCell(new Phrase(Omarks, Parafont));
+                    table.AddCell(new Phrase(TMarks, Parafont));
+                    table.AddCell(new Phrase(TWeightAge, Parafont));
+                    table.AddCell(new Phrase(Dtime.ToString(),Parafont));
+                }
+                doc.Add(table);
+
+            }
         }
     }
 }

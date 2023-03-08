@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TmEssentials</name>
+    </assembly>
+    <members>
+        <member name="M:TmEssentials.TimeInt32.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:TmEssentials.TimeInt32"/> from hours, minutes, and seconds.
+            </summary>
+            <param name="hours">Hours.</param>
+            <param name="minutes">Minutes.</param>
+            <param name="seconds">Seconds.</param>
+        </member>
+        <member name="M:TmEssentials.TimeInt32.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:TmEssentials.TimeInt32"/> from days, hours, minutes, seconds, and milliseconds.
+            </summary>
+            <param name="days">Days.</param>
+            <param name="hours">Hours.</param>
+            <param name="minutes">Minutes.</param>
+            <param name="seconds">Seconds.</param>
+            <param name="milliseconds">Milliseconds.</param>
+        </member>
+        <member name="M:TmEssentials.TimeInt32.ToString(System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeInt32"/> to a Trackmania familiar time format.
+            </summary>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeInt32.ToString">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeInt32"/> to a Trackmania familiar time format with milliseconds and without apostrophes.
+            </summary>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeInt32.ToTimeSingle">
+            <summary>
+            Converts this <see cref="T:TmEssentials.TimeInt32"/> to its equal <see cref="T:TmEssentials.TimeSingle"/> value.
+            </summary>
+            <returns>A <see cref="T:TmEssentials.TimeSingle"/>.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeInt32Extensions.ToTmString(TmEssentials.TimeInt32,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeInt32"/> to a Trackmania familiar time format.
+            </summary>
+            <remarks>This method just calls <see cref="M:TmEssentials.TimeInt32.ToString(System.Boolean,System.Boolean)"/> and exists only for consistency.</remarks>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeInt32Extensions.ToTmString(System.Nullable{TmEssentials.TimeInt32},System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeInt32"/> to a Trackmania familiar time format. If the value is null, <paramref name="nullString"/> will be used.
+            </summary>
+            <param name="time">A TimeSpan.</param>
+            <param name="nullString">A string to use if <paramref name="time"/> is null.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeInt32Extensions.ToTmString(System.Nullable{TmEssentials.TimeInt32},System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeInt32"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used, or -'--''--- when <paramref name="useApostrophe"/> is true.
+            </summary>
+            <param name="time">A TimeSingle.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingle.ToTimeInt32">
+            <summary>
+            Converts this <see cref="T:TmEssentials.TimeSingle"/> to its equal <see cref="T:TmEssentials.TimeInt32"/> value.
+            </summary>
+            <returns>A <see cref="T:TmEssentials.TimeInt32"/>.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingle.ToString(System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeSingle"/> to a Trackmania familiar time format.
+            </summary>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingle.ToString">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeSingle"/> to a Trackmania familiar time format with milliseconds and without apostrophes.
+            </summary>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingleExtensions.ToTmString(TmEssentials.TimeSingle,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeSingle"/> to a Trackmania familiar time format.
+            </summary>
+            <remarks>This method just calls <see cref="M:TmEssentials.TimeSingle.ToString(System.Boolean,System.Boolean)"/> and exists only for consistency.</remarks>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingleExtensions.ToTmString(System.Nullable{TmEssentials.TimeSingle},System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeSingle"/> to a Trackmania familiar time format. If the value is null, <paramref name="nullString"/> will be used.
+            </summary>
+            <param name="time">A TimeSpan.</param>
+            <param name="nullString">A string to use if <paramref name="time"/> is null.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSingleExtensions.ToTmString(System.Nullable{TmEssentials.TimeSingle},System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:TmEssentials.TimeSingle"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used, or -'--''--- when <paramref name="useApostrophe"/> is true.
+            </summary>
+            <param name="time">A TimeSingle.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSpanExtensions.ToMilliseconds(System.TimeSpan)">
+            <summary>
+            Converts the <paramref name="timeSpan"/> to a truncated millisecond representation (floor rounding).
+            </summary>
+            <param name="timeSpan">A TimeSpan.</param>
+            <returns>Amount of milliseconds.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSpanExtensions.ToTmString(System.TimeSpan,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:System.TimeSpan"/> to a Trackmania familiar time format.
+            </summary>
+            <param name="timeSpan">A TimeSpan.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSpanExtensions.ToTmString(System.Nullable{System.TimeSpan},System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:System.TimeSpan"/> to a Trackmania familiar time format. If the value is null, <paramref name="nullString"/> will be used.
+            </summary>
+            <param name="timeSpan">A TimeSpan.</param>
+            <param name="nullString">A string to use if <paramref name="timeSpan"/> is null.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+        <member name="M:TmEssentials.TimeSpanExtensions.ToTmString(System.Nullable{System.TimeSpan},System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of the current <see cref="T:System.TimeSpan"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used, or -'--''--- when <paramref name="useApostrophe"/> is true.
+            </summary>
+            <param name="timeSpan">A TimeSpan.</param>
+            <param name="useHundredths">If to use the hundredths instead of milliseconds (for better looks on TMUF for example)</param>
+            <param name="useApostrophe">If to use ' instead of a colon and '' instead of a dot (to resolve cases where colon is not allowed for example).</param>
+            <returns>A string representation of Trackmania time format.</returns>
+        </member>
+    </members>
+</doc>

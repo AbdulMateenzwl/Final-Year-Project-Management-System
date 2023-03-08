@@ -109,3 +109,4 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Pdf.Base.xml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.PdfViewer.Windows.xml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Shared.Base.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS_Content.g.cs

@@ -41,8 +41,6 @@ namespace FYP_MS.HelperClasses
         public GenerateReport()
         {
             InitializeComponent();
-            //pdfviewer.Navigate(new Uri("about:blank")); 
-            //pdfviewer.Navigate("C:\\Users\\star tech !\\Desktop\\Semester-4-Database-Mid-Project\\Application\\FYP MS\\bin\\Debug\\Test.pdf");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,38 +63,51 @@ namespace FYP_MS.HelperClasses
 
 
                 ////////////////// Student Section
-                AddFirstHeading("Students", ref doc);
-                AddStudentTable(ref doc);
-                doc.NewPage();
+                if (StuTablechk.IsChecked == true)
+                {
+                    AddFirstHeading("Students", ref doc);
+                    AddStudentTable(ref doc);
+                    doc.NewPage();
+                }
                 // End Student Section
 
                 ////////////////// Advisors Section
-                AddFirstHeading("Advisors", ref doc);
-                AddAdvisorTable(ref doc);
-                doc.NewPage();
+                if (AdvTablechk.IsChecked == true)
+                {
+                    AddFirstHeading("Advisors", ref doc);
+                    AddAdvisorTable(ref doc);
+                    doc.NewPage();
+                }
                 // End Advisors Section
 
                 /////////////////// Evaluation SEction
-                AddFirstHeading("Evaluations", ref doc);
-                AddEvaluationTable(ref doc);
-                doc.NewPage();
+                if (EvlTablechk.IsChecked == true)
+                {
+                    AddFirstHeading("Evaluations", ref doc);
+                    AddEvaluationTable(ref doc);
+                    doc.NewPage();
+                }
                 //  End Evluation Section
 
                 ///////////////////  Project Section
-                AddFirstHeading("Projects", ref doc);
-                AddProjectsTable(ref doc);
-                doc.NewPage();
+                if (ProjectTablechk.IsChecked== true)
+                {
+                    AddFirstHeading("Projects", ref doc);
+                    AddProjectsTable(ref doc);
+                    doc.NewPage();
+                }
                 // End Project Secion
 
                 ////////// Assigned Advisor with there Students Section
-                AddFirstHeading("Groups with Assigned Project and Advisors", ref doc);
-                AddAdvisorsWithStudents(ref doc);
-                doc.NewPage();
+                if (GroupsAdvEvlTablechk.IsChecked == true)
+                {
+                    AddFirstHeading("Groups with Assigned Project and Advisors", ref doc);
+                    AddAdvisorsWithStudents(ref doc);
+                    doc.NewPage();
+                }
                 //End Advisors Student Section
                 doc.Close();
             }
-            
-            
         }
         private void AddFirstHeading(string str,ref Document doc)
         {
@@ -312,5 +323,6 @@ namespace FYP_MS.HelperClasses
             }
             doc.Add(table);
         }
+
     }
 }

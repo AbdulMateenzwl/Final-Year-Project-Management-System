@@ -5,38 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FYP_MS.HelperClasses"
              
+             xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+             
              x:Class="FYP_MS.HelperClasses.GenerateReport"
              
 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <local:ViewModel/>
+    </UserControl.DataContext>
+    
     <DockPanel Background="AliceBlue" >
-        
+    
         <StackPanel DockPanel.Dock="Left">
             <Button Content="Create Report" Margin="5" Click="CreateReport_Click" Width="80" Style="{StaticResource Btntype1}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label VerticalAlignment="Center">Students</Label>
-                <CheckBox Name="StuTablechk" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+                <Label VerticalAlignment="Center" Content="Students"/>
+                <CheckBox x:Name="StuTablechk" IsChecked="True" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label VerticalAlignment="Center">Advisors</Label>
-                <CheckBox Name="AdvTablechk" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+                <Label VerticalAlignment="Center" Content="Advisors"/>
+                <CheckBox x:Name="AdvTablechk" IsChecked="True" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label VerticalAlignment="Center">Evaluations</Label>
-                <CheckBox Name="EvlTablechk" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+                <Label VerticalAlignment="Center" Content="Evaluations"/>
+                <CheckBox x:Name="EvlTablechk" IsChecked="True" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label VerticalAlignment="Center">Projects</Label>
-                <CheckBox Name="ProjectTablechk" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+                <Label VerticalAlignment="Center" Content="Projects"/>
+                <CheckBox x:Name="ProjectTablechk" IsChecked="True" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label VerticalAlignment="Center">Groups Details</Label>
-                <CheckBox Name="GroupsAdvEvlTablechk" IsChecked="True" VerticalAlignment="Center"></CheckBox>
+                <Label VerticalAlignment="Center" Content="Groups Details"/>
+                <CheckBox x:Name="GroupsAdvEvlTablechk" IsChecked="True" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel>
-            <Button Click="Button_Click_1"></Button>
-        </StackPanel>
+            <PdfViewer:PdfViewerControl x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" />
     </DockPanel>
 </UserControl>

@@ -109,4 +109,25 @@ C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Pdf.Base.xml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.PdfViewer.Windows.xml
 C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Shared.Base.xml
-C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\obj\Debug\FYP MS_Content.g.cs
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\GBX.NET.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\GemBox.Document.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Buffers.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Memory.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.ValueTuple.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\TmEssentials.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\GBX.NET.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\GemBox.Document.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Buffers.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Memory.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\System.ValueTuple.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\TmEssentials.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.PdfViewer.WPF.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Shared.WPF.dll
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.PdfViewer.WPF.xml
+C:\Users\star tech !\Desktop\Semester-4-Database-Mid-Project\Application\FYP MS\bin\Debug\Syncfusion.Shared.WPF.xml

@@ -41,13 +41,13 @@ namespace FYP_MS.HelperClasses
         public GenerateReport()
         {
             InitializeComponent();
+            pdfViewer.ShowToolbar = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void CreateReport_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
@@ -106,6 +106,7 @@ namespace FYP_MS.HelperClasses
                     doc.NewPage();
                 }
                 //End Advisors Student Section
+
                 doc.Close();
             }
         }
@@ -323,6 +324,13 @@ namespace FYP_MS.HelperClasses
             }
             doc.Add(table);
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
+        }
+        private void StuTablechk_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

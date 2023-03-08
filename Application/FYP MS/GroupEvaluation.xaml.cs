@@ -35,13 +35,13 @@ namespace FYP_MS
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Load Evaluated and unEvaluated Groups with the same name
-            loadEvaluatedGroup();
             loadUnEvaluatedGroup();
         }
 
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = null;
+            loadUnEvaluatedGroup();
         }
 
         private void EvaluationNamecmbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,25 +54,42 @@ namespace FYP_MS
         }
         private void loadUnEvaluatedGroup()
         {
-            if (int.TryParse(SearchBar.Text.ToString(),out int id))
+            try
             {
-                UnEvlGroupGrid.ItemsSource = Group_Helper.SearchUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString(),int.Parse(SearchBar.Text.ToString())).DefaultView; 
+                if (EvaluationNamecmbox.ItemsSource != null)
+                {
+                    if (int.TryParse(SearchBar.Text.ToString(), out int id))
+                    {
+                        UnEvlGroupGrid.ItemsSource = Group_Helper.SearchUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
+                    }
+                    else
+                    {
+                        UnEvlGroupGrid.ItemsSource = Group_Helper.GetUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+                    }
+                }
             }
-            else
-            {
-                UnEvlGroupGrid.ItemsSource = Group_Helper.GetUnEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
-            }
+            catch { MessageBox.Show("loadunevl"); }
+            
         }
         private void loadEvaluatedGroup()
         {
-            if (int.TryParse(SearchBar.Text.ToString(), out int id))
+            try
             {
-                EvlGroupGrid.ItemsSource = Group_Helper.SearchEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
+                if (EvaluationNamecmbox.SelectedValue.ToString() != null)
+                {
+                    if (int.TryParse(SearchBar.Text.ToString(), out int id))
+                    {
+                        //EvlGroupGrid.ItemsSource = Group_Helper.SearchEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
+                    }
+                    else
+                    {
+
+                        //EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+                    }
+                }
             }
-            else
-            {
-                EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
-            }
+            catch { MessageBox.Show("Evl"); }
+                
         }
 
         private void StuGrid_Loaded()

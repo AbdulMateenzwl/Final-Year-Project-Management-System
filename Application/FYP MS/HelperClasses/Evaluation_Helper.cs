@@ -13,7 +13,7 @@ namespace FYP_MS.HelperClasses
 {
     public static class Evaluation_Helper
     {
-        public static DataTable GetEvaluations(string str)
+        public static DataTable GetEvaluations(string str="")
         {
             var con = Config.getConnection();
             SqlCommand cmd = new SqlCommand("Select * from Evaluation where name like @str", con);
@@ -140,9 +140,12 @@ namespace FYP_MS.HelperClasses
             SqlCommand cmd = new SqlCommand("select sum(totalweightage) from Evaluation ", con);
             con.Open();
             var id = cmd.ExecuteScalar();
-            if (id == null) return 0;
             con.Close();
-            return (int)id;
+            if(int.TryParse(id.ToString(),out int sum))
+            {
+                return sum;
+            }
+            return 0;
         }
     }
 }

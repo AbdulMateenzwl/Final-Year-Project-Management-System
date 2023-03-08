@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 
 using FYP_MS;
-using FYP_MS.HelperClasses;
+using RootLibrary.WPF.Localization;
 using System;
 using System.Diagnostics;
 using System.Windows;

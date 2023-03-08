@@ -16,6 +16,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Data;
 using System.Windows.Documents;
+using Syncfusion.Windows.Forms;
 
 namespace FYP_MS.HelperClasses
 {
@@ -35,8 +36,8 @@ namespace FYP_MS.HelperClasses
         public GenerateReport()
         {
             InitializeComponent();
-            pdfviewer.Navigate(new Uri("about:blank")); 
-            pdfviewer.Navigate("C:\\Users\\star tech !\\Desktop\\Semester-4-Database-Mid-Project\\Application\\FYP MS\\bin\\Debug\\Test.pdf");
+            //pdfviewer.Navigate(new Uri("about:blank")); 
+            //pdfviewer.Navigate("C:\\Users\\star tech !\\Desktop\\Semester-4-Database-Mid-Project\\Application\\FYP MS\\bin\\Debug\\Test.pdf");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,29 +51,36 @@ namespace FYP_MS.HelperClasses
             PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Test.pdf", FileMode.Create));
             doc.Open();
 
-
-
             
             ////////////////// Student Section
             AddFirstHeading("Students", ref doc);
             AddStudentTable(ref doc);
+            doc.NewPage();
             // End Student Section
+
+            ////////////////// Advisors Section
             AddFirstHeading("Advisors", ref doc);
             AddAdvisorTable(ref doc);
-            ////////////////// Advisors Section
-            
+            doc.NewPage();
             // End Advisors Section
+
+            /////////////////// Evaluation SEction
+            AddFirstHeading("Evaluations", ref doc);
+            AddEvaluationTable(ref doc);
+            doc.NewPage();
+            //  End Evluation Section
 
             ///////////////////  Project Section
             AddFirstHeading("Projects",ref doc);
             AddProjectsTable(ref doc);
+            doc.NewPage();
             // End Project Secion
 
             ////////// Assigned Advisor with there Students Section
             AddFirstHeading("Groups with Assigned Project and Advisors",ref doc);
             AddAdvisorsWithStudents(ref doc);
+            doc.NewPage();
             //End Advisors Student Section
-
             doc.Close();
         }
         private void AddFirstHeading(string str,ref Document doc)
@@ -191,7 +199,7 @@ namespace FYP_MS.HelperClasses
         private void AddAdvisorsWithStudents(ref Document doc)
         {
             DataTable dataTable = Project_Helper.GetProjectWithAdvisorsNames();
-            
+            int numRows = 0;
             foreach (DataRow row in dataTable.Rows)
             {
                 int Gid = int.Parse(row["GroupId"].ToString());
@@ -200,7 +208,7 @@ namespace FYP_MS.HelperClasses
                 string MAdv= row["Main Advisor"].ToString();
                 string CAdv= row["Co Advisor"].ToString();
                 string IAdv= row["Industry Advisor"].ToString();
-                AddSecHeading(Title + ' ' + Gid, ref doc);
+                AddSecHeading( RomanNum.IntToRoman(++numRows) + ") Group ID : " + Gid , ref doc);
                 AddPara($"The topic of Group {Gid} is {Title}.Project Assign Date is {assignDate}. The Advisors Assigned to the group are ",ref doc);
                 AddFontHeading($"Main Advisor : {MAdv}", ref doc);
                 AddFontHeading($"Co Advisor : {CAdv}", ref doc);
@@ -209,10 +217,10 @@ namespace FYP_MS.HelperClasses
 
 
                 //Each Group Student Table
-                AddThirdHeading("Group Students", ref doc);
+                AddThirdHeading(" • Group Students", ref doc);
                 if (dataTable.Rows.Count <= 1)
                 {
-                    AddPara("There are no Students int this group to display.", ref doc);
+                    AddPara("There are no Students int this group.", ref doc);
                 }
                 DataTable dTable = Group_Helper.GetStuFromGid(Gid);
                 PdfPTable table = new PdfPTable(dTable.Columns.Count - 1);
@@ -239,10 +247,10 @@ namespace FYP_MS.HelperClasses
 
                 //Each Group Evaluations Table
                 dTable = Evaluation_Helper.GetEvaluationFromGid(Gid);
-                AddThirdHeading("Group Evaluations", ref doc);
-                if (dTable.Rows.Count<=1)
+                AddThirdHeading(" • Group Evaluations", ref doc);
+                if (dTable.Rows.Count<1)
                 {
-                    AddPara("There are no Evaluations of this group to display.",ref doc);
+                    AddPara("There are no Evaluations of this group.",ref doc);
                 }
                 table = new PdfPTable(dTable.Columns.Count - 2);
                 table.SpacingBefore = 10;
@@ -258,6 +266,7 @@ namespace FYP_MS.HelperClasses
                     string TMarks= Row["TotalMarks"].ToString();
                     string TWeightAge = Row["TotalWeightage"].ToString();
                     DateTime Dtime = (DateTime)Row["EvaluationDate"];
+                    table.AddCell(new Phrase(Ename, Parafont));
                     table.AddCell(new Phrase(Omarks, Parafont));
                     table.AddCell(new Phrase(TMarks, Parafont));
                     table.AddCell(new Phrase(TWeightAge, Parafont));
@@ -266,6 +275,27 @@ namespace FYP_MS.HelperClasses
                 doc.Add(table);
 
             }
+        }
+        private void AddEvaluationTable(ref Document doc)
+        {
+            DataTable dataTable = Evaluation_Helper.GetEvaluations();
+            PdfPTable table = new PdfPTable(dataTable.Columns.Count - 1);
+            table.SpacingBefore = 10;
+            for (int i = 1; i < dataTable.Columns.Count; i++)
+            {
+                table.AddCell(new Phrase(dataTable.Columns[i].ColumnName));
+            }
+            table.HeaderRows = 1;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string title = row["Name"].ToString();
+                string totalmarks= row["TotalMarks"].ToString();
+                string totalWeightAge = row["TotalWeightAge"].ToString();
+                table.AddCell(new Phrase(title, Parafont));
+                table.AddCell(new Phrase(totalmarks, Parafont));
+                table.AddCell(new Phrase(totalWeightAge, Parafont));
+            }
+            doc.Add(table);
         }
     }
 }

@@ -35,7 +35,8 @@ namespace FYP_MS.HelperClasses
         public GenerateReport()
         {
             InitializeComponent();
-            Grid.ItemsSource = Stu_Helper.GetStudentTableDetails().DefaultView;
+            pdfviewer.Navigate(new Uri("about:blank")); 
+            pdfviewer.Navigate("C:\\Users\\star tech !\\Desktop\\Semester-4-Database-Mid-Project\\Application\\FYP MS\\bin\\Debug\\Test.pdf");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -56,9 +57,10 @@ namespace FYP_MS.HelperClasses
             AddFirstHeading("Students", ref doc);
             AddStudentTable(ref doc);
             // End Student Section
-
+            AddFirstHeading("Advisors", ref doc);
+            AddAdvisorTable(ref doc);
             ////////////////// Advisors Section
-
+            
             // End Advisors Section
 
             ///////////////////  Project Section
@@ -100,7 +102,7 @@ namespace FYP_MS.HelperClasses
         private void AddPara(string str,ref Document doc)
         {
             iTextSharp.text.Paragraph StudentFirstHeading = new iTextSharp.text.Paragraph(str, Parafont);
-            StudentFirstHeading.IndentationLeft = 40;
+            StudentFirstHeading.IndentationLeft = 70;
             doc.Add(StudentFirstHeading);
         }
         private void AddStudentTable(ref Document doc)
@@ -133,6 +135,37 @@ namespace FYP_MS.HelperClasses
                 table.AddCell(new Phrase(Gender, Parafont));
             }
 
+            doc.Add(table);
+        }
+        private void AddAdvisorTable(ref Document doc)
+        {
+            DataTable dataTable = Advisor_Helper.GetAdvisorTableDetails();
+            PdfPTable table = new PdfPTable(dataTable.Columns.Count - 1);
+            table.SpacingBefore = 10;
+            for (int i = 1; i < dataTable.Columns.Count; i++)
+            {
+                table.AddCell(new Phrase(dataTable.Columns[i].ColumnName));
+            }
+            table.HeaderRows = 1;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string firstname = row["firstName"].ToString();
+                string lastname = row["LastName"].ToString();
+                string designation = row["Designation"].ToString();
+                string salary = row["Salary"].ToString();
+                string contact = row["Contact"].ToString();
+                string email = row["Email"].ToString();
+                string DOB = row["DateofBirth"].ToString();
+                string Gender = row["Gender"].ToString();
+                table.AddCell(new Phrase(firstname, Parafont));
+                table.AddCell(new Phrase(lastname, Parafont));
+                table.AddCell(new Phrase(designation, Parafont));
+                table.AddCell(new Phrase(salary, Parafont));
+                table.AddCell(new Phrase(contact, Parafont));
+                table.AddCell(new Phrase(email, Parafont));
+                table.AddCell(new Phrase(DOB, Parafont));
+                table.AddCell(new Phrase(Gender, Parafont));
+            }
             doc.Add(table);
         }
         private void AddProjectsTable(ref Document doc)
@@ -177,6 +210,10 @@ namespace FYP_MS.HelperClasses
 
                 //Each Group Student Table
                 AddThirdHeading("Group Students", ref doc);
+                if (dataTable.Rows.Count <= 1)
+                {
+                    AddPara("There are no Students int this group to display.", ref doc);
+                }
                 DataTable dTable = Group_Helper.GetStuFromGid(Gid);
                 PdfPTable table = new PdfPTable(dTable.Columns.Count - 1);
                 table.SpacingBefore = 10;
@@ -202,9 +239,10 @@ namespace FYP_MS.HelperClasses
 
                 //Each Group Evaluations Table
                 dTable = Evaluation_Helper.GetEvaluationFromGid(Gid);
-                if (dTable.Rows.Count>1)
+                AddThirdHeading("Group Evaluations", ref doc);
+                if (dTable.Rows.Count<=1)
                 {
-                    AddThirdHeading("Group Evaluations", ref doc);
+                    AddPara("There are no Evaluations of this group to display.",ref doc);
                 }
                 table = new PdfPTable(dTable.Columns.Count - 2);
                 table.SpacingBefore = 10;

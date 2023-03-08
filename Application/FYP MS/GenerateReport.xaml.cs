@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +18,17 @@ using iTextSharp.text.pdf;
 using System.Data;
 using System.Windows.Documents;
 using Syncfusion.Windows.Forms;
+using CrystalDecisions.Shared;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Globalization;
 
 namespace FYP_MS.HelperClasses
 {
     /// <summary>
     /// Interaction logic for GenerateReport.xaml
     /// </summary>
-    public partial class GenerateReport : UserControl
+    public partial class GenerateReport : System.Windows.Controls.UserControl
     {
         // Fonts
         static BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
@@ -47,41 +52,51 @@ namespace FYP_MS.HelperClasses
 
         private void CreateReport_Click(object sender, RoutedEventArgs e)
         {
-            Document doc = new Document(iTextSharp.text.PageSize.LETTER,10,10,42,35);
-            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream("Test.pdf", FileMode.Create));
-            doc.Open();
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.DefaultExt = ".pdf";
+            saveFileDialog.Filter = "PDF document (*.pdf)|*.pdf";
+            saveFileDialog.FileName = $"FYP Report {DateTime.Now.ToString("yyyy-MM-dd")}";
+            saveFileDialog.InitialDirectory = $"C:\\Users\\{System.Environment.MachineName}\\Desktop";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(saveFileDialog.FileName, FileMode.Create));
+                doc.Open();
 
+
+                ////////////////// Student Section
+                AddFirstHeading("Students", ref doc);
+                AddStudentTable(ref doc);
+                doc.NewPage();
+                // End Student Section
+
+                ////////////////// Advisors Section
+                AddFirstHeading("Advisors", ref doc);
+                AddAdvisorTable(ref doc);
+                doc.NewPage();
+                // End Advisors Section
+
+                /////////////////// Evaluation SEction
+                AddFirstHeading("Evaluations", ref doc);
+                AddEvaluationTable(ref doc);
+                doc.NewPage();
+                //  End Evluation Section
+
+                ///////////////////  Project Section
+                AddFirstHeading("Projects", ref doc);
+                AddProjectsTable(ref doc);
+                doc.NewPage();
+                // End Project Secion
+
+                ////////// Assigned Advisor with there Students Section
+                AddFirstHeading("Groups with Assigned Project and Advisors", ref doc);
+                AddAdvisorsWithStudents(ref doc);
+                doc.NewPage();
+                //End Advisors Student Section
+                doc.Close();
+            }
             
-            ////////////////// Student Section
-            AddFirstHeading("Students", ref doc);
-            AddStudentTable(ref doc);
-            doc.NewPage();
-            // End Student Section
-
-            ////////////////// Advisors Section
-            AddFirstHeading("Advisors", ref doc);
-            AddAdvisorTable(ref doc);
-            doc.NewPage();
-            // End Advisors Section
-
-            /////////////////// Evaluation SEction
-            AddFirstHeading("Evaluations", ref doc);
-            AddEvaluationTable(ref doc);
-            doc.NewPage();
-            //  End Evluation Section
-
-            ///////////////////  Project Section
-            AddFirstHeading("Projects",ref doc);
-            AddProjectsTable(ref doc);
-            doc.NewPage();
-            // End Project Secion
-
-            ////////// Assigned Advisor with there Students Section
-            AddFirstHeading("Groups with Assigned Project and Advisors",ref doc);
-            AddAdvisorsWithStudents(ref doc);
-            doc.NewPage();
-            //End Advisors Student Section
-            doc.Close();
+            
         }
         private void AddFirstHeading(string str,ref Document doc)
         {

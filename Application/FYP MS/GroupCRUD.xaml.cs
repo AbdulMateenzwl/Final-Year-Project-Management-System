@@ -53,7 +53,7 @@ namespace FYP_MS
         }
         private void Grid_Loaded(object sender = null, RoutedEventArgs e = null)
         {
-            //Grid.Columns[0].Visibility = Visibility.Collapsed;
+            // try { Grid.Columns[0].Visibility = Visibility.Collapsed; } catch { }
         }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -81,6 +81,7 @@ namespace FYP_MS
                 {
                     //  Get the selected group table from database
                     StudentsGrid.ItemsSource = Group_Helper.GetStuFromGid(int.Parse(row.Row[0].ToString())).DefaultView;
+                    StudentsGrid.Columns[0].Visibility = Visibility.Hidden;
                 }
                 catch (Exception ex)
                 {

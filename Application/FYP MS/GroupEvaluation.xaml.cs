@@ -41,7 +41,6 @@ namespace FYP_MS
         private void clearTxt_Click(object sender, RoutedEventArgs e)
         {
             SearchBar.Text = null;
-            loadUnEvaluatedGroup();
         }
 
         private void EvaluationNamecmbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,7 +67,7 @@ namespace FYP_MS
                     }
                 }
             }
-            catch { MessageBox.Show("loadunevl"); }
+            catch {}
             
         }
         private void loadEvaluatedGroup()
@@ -79,16 +78,16 @@ namespace FYP_MS
                 {
                     if (int.TryParse(SearchBar.Text.ToString(), out int id))
                     {
-                        //EvlGroupGrid.ItemsSource = Group_Helper.SearchEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
+                        EvlGroupGrid.ItemsSource = Group_Helper.SearchEvaluated(EvaluationNamecmbox.SelectedValue.ToString(), int.Parse(SearchBar.Text.ToString())).DefaultView;
                     }
                     else
                     {
 
-                        //EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
+                        EvlGroupGrid.ItemsSource = Group_Helper.GetEvaluated(EvaluationNamecmbox.SelectedValue.ToString()).DefaultView;
                     }
                 }
             }
-            catch { MessageBox.Show("Evl"); }
+            catch {}
                 
         }
 

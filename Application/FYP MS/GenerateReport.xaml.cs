@@ -41,7 +41,6 @@ namespace FYP_MS.HelperClasses
         public GenerateReport()
         {
             InitializeComponent();
-            pdfViewer.ShowToolbar = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -20,7 +20,7 @@
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="AssignProjectbtn" MouseLeftButtonUp="AssignProjectbtn_MouseLeftButtonUp" Content="Manage Group Project"/>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="EvalutionBtn" MouseLeftButtonUp="EvalutionBtn_MouseLeftButtonUp">Manage Evaluations</Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="GroupEvaluation" MouseLeftButtonUp="GroupEvaluation_MouseLeftButtonUp">Manage Group Evaluation </Label>
-            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="CreateReports" MouseLeftButtonUp="CreateReports_MouseLeftButtonUp">Manage Group Evaluation </Label>
+            <Label Style="{StaticResource s_options}" DockPanel.Dock="Top" x:Name="CreateReports" MouseLeftButtonUp="CreateReports_MouseLeftButtonUp">Generate Reports </Label>
             <Label Style="{StaticResource s_options}" DockPanel.Dock="Bottom" >Setting</Label>
         </DockPanel>
             

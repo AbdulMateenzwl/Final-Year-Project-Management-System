@@ -26,7 +26,7 @@ The primary motivation behind this project is to learn how to work with database
 This project is intended for universities and institutions managing final year projects manually. The application offers an automated solution for managing students, advisors, groups, projects, and evaluations, making the process more streamlined and error-free.
 
 ## Tech Stack
-- Front-end: HTML, CSS, JavaScript
+- Front-end: WinForm
 - Back-end: C#.NET Framework
 - Database: SQL Server
 - PDF Generation: iTextSharp

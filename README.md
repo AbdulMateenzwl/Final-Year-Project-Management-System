@@ -1,6 +1,5 @@
 # Database Mid Term Porject
-### This is a private repo.
-### Currently Working on this Project will make it public in future.
+
 #### [My LeetCode Profile Here](https://leetcode.com/notrealmateen/)
 #### [My HackerRank Profile Here](https://www.hackerrank.com/notrealmateen/)
 

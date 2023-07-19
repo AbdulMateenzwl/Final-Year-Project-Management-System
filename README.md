@@ -1,33 +1,68 @@
-# Database Mid Term Porject
-
-#### [My LeetCode Profile Here](https://leetcode.com/notrealmateen/)
-#### [My HackerRank Profile Here](https://www.hackerrank.com/notrealmateen/)
-
-## Connect with me  
-
-<div align="center">
-
- [![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/notrealmateen) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/notrealmateen) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/notrealmateen) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/notrealmateen) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@notrealmateen) [![Pinterest](https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white)](https://pinterest.com/notrealmateen) [![Quora](https://img.shields.io/badge/Quora-%23B92B27.svg?logo=Quora&logoColor=white)](https://quora.com/profile/Abdul-Mateen-1199) [![Reddit](https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white)](https://reddit.com/user/notrealmateen) [![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white)](https://tiktok.com/@notrealmateen) [![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/19561209/notrealmateen) [![Behance](https://img.shields.io/badge/Behance-1769ff?logo=behance&logoColor=white)](https://behance.net/notrealmateen)
+# University Final Year Project Management System
 
 
-</div>  
+## Table of Contents
+- [Introduction](#introduction)
+  - [Description](#description)
+  - [Motivation](#motivation)
+  - [Target Audience](#target-audience)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
+## Introduction
 
-<p align="center">
-<a href="https://www.github.com/notrealmateen" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /></a>
-<a href="https://codesandbox.io/u/notrealmateen" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/codesandbox.svg" width="32" height="32" /></a> 
-<a href="https://www.codepen.io/notrealmateen" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/codepen.svg" width="32" height="32" /></a> 
- <a href="https://www.dev.to/notrealmateen" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/devdotto.svg" width="32" height="32" /></a> 
-  <a href="https://notrealmateen.hashnode.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/hashnode.svg" width="32" height="32" /></a> 
-   <a href="http://www.medium.com/@notrealmateen" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg" width="32" height="32" /></a> 
+### Description
+The University Final Year Project Management System is a desktop-based application developed as a semester project for the Database Management course. The system automates the management of final year projects in the Computer Science Department of UET Lahore. It integrates a database management system with a user-friendly front-end, providing efficient data entry, deletion, and management for student evaluations.
 
-</p>
+### Motivation
+The primary motivation behind this project is to learn how to work with databases, maintain data in tables, and apply these skills to build a comprehensive project management system. By implementing this project using C#.NET Framework and SQL Server, we aim to gain hands-on experience in database-driven applications.
 
-<p align="center">
-<a href="https://www.codechef.com/users/notrealmateen" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/codechef.svg" alt="notrealmateen" height="30" width="40" /></a>
-<a href="https://www.hackerrank.com/notrealmateen" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" alt="notrealmateen" height="30" width="40" /></a>
-<a href="https://www.leetcode.com/notrealmateen" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="notrealmateen" height="30" width="40" /></a>
-<a href="https://www.hackerearth.com/@notrealmateen" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerearth.svg" alt="notrealmateen" height="30" width="40" /></a>
-<a href="https://auth.geeksforgeeks.org/user/notrealmateen/profile" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/geeks-for-geeks.svg" alt="notrealmateen/profile" height="30" width="40" /></a>
+### Target Audience
+This project is intended for universities and institutions managing final year projects manually. The application offers an automated solution for managing students, advisors, groups, projects, and evaluations, making the process more streamlined and error-free.
 
-</p>
+## Tech Stack
+- Front-end: HTML, CSS, JavaScript
+- Back-end: C#.NET Framework
+- Database: SQL Server
+- PDF Generation: iTextSharp
+
+## Features
+- User Authentication: Secure login for administrators.
+- Student Management: Add and update student details.
+- Advisor Management: Add advisors with their designations.
+- Project Management: Add and update project titles and descriptions.
+- Group Creation: Create groups and assign projects to them.
+- Member Management: Add or remove members from groups.
+- Evaluation System: Conduct evaluations and add marks for each group.
+- PDF Reports: Generate PDF reports containing valuable project information.
+
+## Installation
+1. Clone the repository to your local machine.
+2. Open the project in Visual Studio.
+3. Set up the database using SQL Server Management Studio and import the provided schema (if available).
+4. Adjust the connection string in the project to connect to your database.
+
+## Usage
+1. Run the application in Visual Studio or by building the executable.
+2. Log in as an administrator using your credentials.
+3. Utilize the various functionalities to manage students, advisors, projects, groups, and evaluations.
+4. Generate PDF reports to review group results.
+
+## Contributing
+Contributions are welcome! If you want to contribute to this project, please follow these steps:
+1. Fork the project.
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request.
+
+## Acknowledgments
+I express my heartfelt gratitude to Allah Almighty for providing me the strength and determination to complete this project successfully. Special thanks to Mr. Samyan Wahla for his exceptional supervision, guidance, and care throughout the project, which significantly contributed to its success.
+
+## License
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as per the terms of the license.
